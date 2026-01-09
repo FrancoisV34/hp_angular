@@ -1,6 +1,11 @@
-import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CharacterModel } from '../../../shared/models/character.model';
+
+export interface RouteData {
+  section: string;
+  breadcrumb: string;
+}
 
 @Component({
   selector: 'app-characters-list',
@@ -9,14 +14,6 @@ import { CharacterModel } from '../../../shared/models/character.model';
   styleUrl: './characters-list.scss',
 })
 export class CharactersList {
-  // @Input() characters: CharacterModel[] = [];
-
   characters = input.required<CharacterModel[]>();
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (changes['characters']) {
-  //     console.log('CharactersList - Données reçues:', this.characters);
-  //     console.log('CharactersList - Nombre de personnages:', this.characters?.length || 0);
-  //   }
-  // }
+  data = input.required<RouteData>();
 }

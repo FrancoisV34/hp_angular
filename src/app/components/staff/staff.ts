@@ -1,36 +1,37 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { CharacterModel } from '../../shared/models/character.model';
-import { CharacterService } from '../../shared/services/character-service';
-import { inject } from '@angular/core';
+import { StaffModel } from '../../shared/models/staff.model';
 import { Observable, Subscription } from 'rxjs';
-import { CharactersList } from './characters-list/characters-list';
 import { ActivatedRoute } from '@angular/router';
+import { StaffService } from '../../shared/services/staff.service';
+import { inject } from '@angular/core';
+import { StaffList } from './staff-list/staff-list';
 
 @Component({
-  selector: 'app-characters',
-  imports: [CharactersList],
-  templateUrl: './characters.html',
-  styleUrl: './characters.scss',
+  selector: 'app-staff',
+  imports: [StaffList],
+  templateUrl: './staff.html',
+  styleUrl: './staff.scss',
 })
-export class Characters implements OnInit {
-  protected characters = signal<CharacterModel[]>([]);
+export class Staff implements OnInit {
+  protected staff = signal<StaffModel[]>([]);
   private subscriptions: Subscription[] = [];
   protected section = signal('');
   private activatedRoute = inject(ActivatedRoute);
   protected breadcrumb = signal('');
 
-  constructor(private characterService: CharacterService) {
-    console.log('dans le constructor');
+  constructor(private staffService: StaffService) {
+    console.log('dans le staffservice constructor');
   }
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.characterService.getAllCharacter().subscribe((allCharacters: CharacterModel[]) => {
-        this.characters.set(allCharacters);
+      this.staffService.getAllProf().subscribe((allProf: StaffModel[]) => {
+        this.staff.set(allProf);
       })
     );
     this.getActivatedRouteData();
   }
+
   private getActivatedRouteData(): void {
     this.subscriptions.push(
       this.activatedRoute.data.subscribe((data) => {
@@ -39,7 +40,6 @@ export class Characters implements OnInit {
       })
     );
   }
-
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
