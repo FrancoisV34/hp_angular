@@ -1,13 +1,60 @@
-<h1>Harry Potter - Characters</h1>
+<div class="characters-page">
+  <header class="characters-header">
+    <h1 class="characters-title">Harry Potter</h1>
+    <p class="characters-subtitle">{{ data().section }}, {{ data().breadcrumb }}</p>
+  </header>
 
-@if (characters().length > 0) {
-<p>
-  Total : <strong>{{ characters().length }} characters</strong>
-</p>
-} @else {
-<p>No characters found</p>
-} @for (character of characters(); track character.id) {
-<h1>{{ character.house }}</h1>
-} @empty {
-<p>No characters found in the list.</p>
-}
+  @if (characters().length > 0) {
+  <p class="characters-count">
+    Total : <strong>{{ characters().length }} characters</strong>
+  </p>
+  } @else {
+  <p class="characters-count">No characters found</p>
+  }
+
+  <div class="characters-grid">
+    @for (character of characters(); track character.id) {
+    <article class="character-card" [class]="'house--' + character.house.toLowerCase()">
+      <div class="character-card__image">
+        <img [src]="character.image" alt="{{ character.name }}" />
+        <div class="character-card__house-badge">{{ character.house }}</div>
+      </div>
+      <div class="character-card__content">
+        <h2 class="character-card__name">{{ character.name }}</h2>
+        <div class="character-card__info">
+          <span class="character-card__label">Actor</span>
+          <span class="character-card__value">{{ character.actor }}</span>
+        </div>
+        <div class="character-card__info">
+          <span class="character-card__label">Birth</span>
+          <span class="character-card__value">{{ character.dateOfBirth }}</span>
+        </div>
+        <div class="character-card__status" [class.alive]="character.alive">
+          <span class="status-dot"></span>
+          {{ character.alive ? 'Alive' : 'Deceased' }}
+        </div>
+      </div>
+      <div class="character-card__wand">
+        <span class="wand-icon">🪄</span>
+        <span>{{ character.wand.wood }} • {{ character.wand.core }}</span>
+      </div>
+    </article>
+    } @empty {
+    <div class="characters-empty">
+      <span class="empty-icon">📜</span>
+      <p>No characters found in the list.</p>
+    </div>
+    }
+  </div>
+
+  <div class="particles">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="staff-page">
+  <header class="staff-header">
+    <h1 class="staff-title">Professeur</h1>
+    <p class="staff-subtitle">{{ data().section }}, {{ data().breadcrumb }}</p>
+  </header>
+
+  @if (staff().length > 0) {
+  <p class="staff-count">
+    Total : <strong>{{ staff().length }} professors</strong>
+  </p>
+  } @else {
+  <p class="staff-count">No professors found</p>
+  }
+
+  <div class="staff-list">
+    @for (member of staff(); track member.id) {
+    <article class="staff-card">
+      <div class="staff-card__portrait">
+        <img [src]="member.image" alt="{{ member.name }}" />
+        <div
+          class="staff-card__house-badge"
+          [class]="'house--' + (member.house || 'unknown').toLowerCase()"
+        >
+          {{ member.house || 'Staff' }}
+        </div>
+      </div>
+      <div class="staff-card__info">
+        <h2 class="staff-card__name">{{ member.name }}</h2>
+        <div class="staff-card__meta">
+          <span class="meta-item">
+            <span class="meta-icon">🎭</span>
+            {{ member.actor }}
+          </span>
+          <span class="meta-item">
+            <span class="meta-icon">🎂</span>
+            {{ member.dateOfBirth }}
+          </span>
+        </div>
+      </div>
+      <div class="staff-card__wand">
+        <span class="wand-icon">🪄</span>
+        <div class="wand-details">
+          <span class="wand-label">Baguette</span>
+          <span class="wand-value">{{ member.wand.wood }} • {{ member.wand.core }}</span>
+        </div>
+      </div>
+    </article>
+    } @empty {
+    <div class="staff-empty">
+      <span class="empty-icon">🎓</span>
+      <p>No professors found at Hogwarts.</p>
+    </div>
+    }
+  </div>
+
+  <div class="particles">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+</div>

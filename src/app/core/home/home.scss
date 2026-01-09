@@ -1,0 +1,174 @@
+.homepage {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  position: relative;
+  overflow: hidden;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #d4af37;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      letter-spacing: 0.2em;
+      margin: 0;
+      font-family: Georgia, serif;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: #a0a0a0;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+  }
+
+  .hogwarts {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    margin-bottom: 3rem;
+
+    .tower {
+      position: absolute;
+      width: 40px;
+      height: 120px;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+      border-radius: 5px 5px 0 0;
+      left: 20px;
+      bottom: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 25px solid #8b0000;
+      }
+    }
+
+    .castle {
+      position: absolute;
+      width: 120px;
+      height: 80px;
+      background: linear-gradient(135deg, #3d3d3d 0%, #252525 100%);
+      border-radius: 10px 10px 0 0;
+      right: 20px;
+      bottom: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 20px solid #8b0000;
+      }
+    }
+  }
+
+  .enter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-size: 1.1rem;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background: #d4af37;
+      color: #1a1a2e;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    }
+
+    .magic-icon {
+      font-size: 1.3rem;
+    }
+  }
+
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #d4af37;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+
+      &:nth-child(1) {
+        top: 10%;
+        left: 20%;
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        top: 30%;
+        left: 80%;
+        animation-delay: 0.5s;
+      }
+      &:nth-child(3) {
+        top: 50%;
+        left: 30%;
+        animation-delay: 1s;
+      }
+      &:nth-child(4) {
+        top: 70%;
+        left: 70%;
+        animation-delay: 1.5s;
+      }
+      &:nth-child(5) {
+        top: 85%;
+        left: 15%;
+        animation-delay: 2s;
+      }
+    }
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  }
+}
