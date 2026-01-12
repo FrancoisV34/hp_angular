@@ -23,7 +23,7 @@ export interface CharacterModel {
   image: string; // est ce que y a genre link ?
 }
 
-export type House = 'Gryffindor' | 'Slytherin' | 'Ravenclaw' | 'Hyfflepuff';
+export type House = 'Gryffindor' | 'Slytherin' | 'Ravenclaw' | 'Hufflepuff';
 export type Gender = 'Male' | 'Female';
 export type Species =
   | 'human'

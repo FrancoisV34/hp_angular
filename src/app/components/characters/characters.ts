@@ -1,10 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, OnInit, Signal, signal } from '@angular/core';
 import { CharacterModel } from '../../shared/models/character.model';
 import { CharacterService } from '../../shared/services/character-service';
 import { inject } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CharactersList } from './characters-list/characters-list';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-characters',
@@ -13,14 +14,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './characters.scss',
 })
 export class Characters implements OnInit {
-  protected characters = signal<CharacterModel[]>([]);
   private subscriptions: Subscription[] = [];
   protected section = signal('');
   private activatedRoute = inject(ActivatedRoute);
   protected breadcrumb = signal('');
+  protected routeData = toSignal(this.activatedRoute.data, {
+    initialValue: this.activatedRoute.snapshot.data,
+  });
 
+  protected characters = signal<CharacterModel[]>([]);
   constructor(private characterService: CharacterService) {
-    console.log('dans le constructor');
+    effect(() => {
+      console.log('Current number of characters:', this.routeData());
+    });
   }
 
   ngOnInit(): void {
@@ -31,6 +37,7 @@ export class Characters implements OnInit {
     );
     this.getActivatedRouteData();
   }
+
   private getActivatedRouteData(): void {
     this.subscriptions.push(
       this.activatedRoute.data.subscribe((data) => {

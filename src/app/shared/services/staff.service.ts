@@ -11,6 +11,6 @@ export class StaffService {
   private httpClient = inject(HttpClient);
 
   getAllProf(): Observable<StaffModel[]> {
-    return this.httpClient.get<StaffModel[]>(environment.baseUrl + '/characters/staff');
+    return this.httpClient.get<StaffModel[]>(environment.baseUrl + '/characters');
   }
 }

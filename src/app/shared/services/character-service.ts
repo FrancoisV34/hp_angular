@@ -13,4 +13,7 @@ export class CharacterService {
   getAllCharacter(): Observable<CharacterModel[]> {
     return this.httpClient.get<CharacterModel[]>(environment.baseUrl + '/characters');
   }
+  getCharacterById(id: string): Observable<CharacterModel[]> {
+    return this.httpClient.get<CharacterModel[]>(`${environment.baseUrl}/character/${id}`);
+  }
 }

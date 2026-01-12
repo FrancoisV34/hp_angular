@@ -1,0 +1,254 @@
+<!-- Loading State -->
+<div *ngIf="!character()" class="loading-container">
+  <div class="spinner"></div>
+  <p>Loading character details...</p>
+</div>
+
+<!-- Character Detail -->
+<div *ngIf="character()" class="character-detail-page">
+  <!-- Character Header -->
+  <div class="character-header" [attr.data-house]="character()?.house">
+    <div class="character-image-section">
+      <img
+        [src]="character()!.image || '/assets/images/default-avatar.png'"
+        [alt]="character()!.name"
+        class="character-image"
+        (error)="$event.target.src = '/assets/images/default-avatar.png'"
+      />
+      <div class="house-crest" [attr.data-house]="character()!.house">
+        <span class="house-name">{{ character()!.house || 'Unknown' }}</span>
+      </div>
+    </div>
+
+    <div class="character-info">
+      <h1 class="character-name">{{ character()!.name }}</h1>
+
+      <!-- Role Badges -->
+      <div class="character-roles">
+        <span *ngIf="character()!.hogwartsStudent" class="role-badge student"> 🧙‍♂️ Student </span>
+        <span *ngIf="character()!.hogwartsStaff" class="role-badge staff"> 👨‍🏫 Staff </span>
+        <span *ngIf="!character()!.alive" class="role-badge deceased"> 💀 Deceased </span>
+      </div>
+
+      <!-- Basic Stats -->
+      <div class="character-stats">
+        <div class="stat-item" *ngIf="character()?.species">
+          <span class="stat-label">Species:</span>
+          <span class="stat-value">{{ character()!.species }}</span>
+        </div>
+        <div class="stat-item" *ngIf="character()?.gender">
+          <span class="stat-label">Gender:</span>
+          <span class="stat-value">{{ character()!.gender }}</span>
+        </div>
+        <div class="stat-item" *ngIf="character()?.dateOfBirth">
+          <span class="stat-label">Born:</span>
+          <span class="stat-value">{{ character()!.dateOfBirth }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Wizard:</span>
+          <span class="stat-value">{{ character()!.wizard ? 'Yes' : 'No' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Details Grid -->
+  <div class="character-details-grid">
+    <!-- Physical Appearance -->
+    <div class="detail-card">
+      <h2 class="card-title">✨ Physical Appearance</h2>
+      <div class="card-content">
+        <div class="appearance-item" *ngIf="character()?.eyeColour">
+          <span class="appearance-label">👁️ Eye Color:</span>
+          <span class="appearance-value">{{ character()!.eyeColour }}</span>
+        </div>
+        <div class="appearance-item" *ngIf="character()?.hairColor">
+          <span class="appearance-label">💇 Hair Color:</span>
+          <span class="appearance-value">{{ character()!.hairColor }}</span>
+        </div>
+
+        <!-- Species Illustration -->
+        <div class="species-illustration" *ngIf="character()?.species">
+          <div class="species-emoji">
+            <span *ngIf="character()!.species === 'human'">👤</span>
+            <span *ngIf="character()!.species === 'half-giant'">🧑‍🦱</span>
+            <span *ngIf="character()!.species === 'dog'">🐕</span>
+            <span *ngIf="character()!.species === 'owl'">🦉</span>
+            <span *ngIf="character()!.species === 'werewolf'">🐺</span>
+            <span *ngIf="character()!.species === 'ghost'">👻</span>
+            <span *ngIf="character()!.species === 'goblin'">👹</span>
+            <span *ngIf="character()!.species === 'giant'">🏔️</span>
+            <span *ngIf="character()!.species === 'house-elf'">🧝</span>
+          </div>
+          <div class="species-label">
+            <span class="species-text">{{ character()!.species | titlecase }}</span>
+            <span class="species-description" *ngIf="character()!.species === 'human'">
+              Magical Human Being
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'half-giant'">
+              Human-Giant Hybrid
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'dog'">
+              Animagus Form
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'owl'">
+              Messenger Creature
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'werewolf'">
+              Cursed Human
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'ghost'">
+              Spirit Entity
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'goblin'">
+              Banking Creature
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'giant'">
+              Mountain Dweller
+            </span>
+            <span class="species-description" *ngIf="character()!.species === 'house-elf'">
+              Domestic Servant
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="no-data"
+          *ngIf="!character()?.eyeColour && !character()?.hairColor && !character()?.species"
+        >
+          No physical appearance data available
+        </div>
+      </div>
+    </div>
+
+    <!-- Magical Properties -->
+    <div class="detail-card">
+      <h2 class="card-title">🔮 Magical Properties</h2>
+      <div class="card-content">
+        <!-- Wand Information -->
+        <div
+          class="wand-section"
+          *ngIf="
+            character()?.wand &&
+            (character()!.wand.wood || character()!.wand.core || character()!.wand.length)
+          "
+        >
+          <h3 class="subsection-title">🪄 Wand</h3>
+          <div class="wand-details">
+            <div class="wand-item" *ngIf="character()!.wand.wood">
+              <span class="wand-label">Wood:</span>
+              <span class="wand-value">{{ character()!.wand.wood }}</span>
+            </div>
+            <div class="wand-item" *ngIf="character()!.wand.core">
+              <span class="wand-label">Core:</span>
+              <span class="wand-value">{{ character()!.wand.core }}</span>
+            </div>
+            <div class="wand-item" *ngIf="character()!.wand.length">
+              <span class="wand-label">Length:</span>
+              <span class="wand-value">{{ character()!.wand.length }}"</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patronus -->
+        <div class="patronus-item" *ngIf="character()?.patronus">
+          <span class="patronus-label">🦌 Patronus:</span>
+          <span class="patronus-value">{{ character()!.patronus }}</span>
+        </div>
+
+        <div
+          class="no-data"
+          *ngIf="
+            !character()?.wand?.wood &&
+            !character()?.wand?.core &&
+            !character()?.wand?.length &&
+            !character()?.patronus
+          "
+        >
+          No magical properties data available
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Information -->
+    <div class="detail-card">
+      <h2 class="card-title">📜 Background</h2>
+      <div class="card-content">
+        <div class="background-item" *ngIf="character()?.ancestry">
+          <span class="background-label">🏛️ Ancestry:</span>
+          <span class="background-value">{{ character()!.ancestry }}</span>
+        </div>
+        <div class="background-item" *ngIf="character()?.year">
+          <span class="background-label">📅 Year of Birth:</span>
+          <span class="background-value">{{ character()!.year }}</span>
+        </div>
+        <div class="background-item">
+          <span class="background-label">❤️ Status:</span>
+          <span class="background-value" [class]="character()!.alive ? 'alive' : 'deceased'">
+            {{ character()!.alive ? 'Alive' : 'Deceased' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acting Information -->
+    <div class="detail-card">
+      <h2 class="card-title">🎭 Acting Information</h2>
+      <div class="card-content">
+        <div class="actor-item" *ngIf="character()?.actor">
+          <span class="actor-label">🎬 Played by:</span>
+          <span class="actor-value">{{ character()!.actor }}</span>
+        </div>
+        <div
+          class="alternate-actors"
+          *ngIf="character()?.alternate_actors && character()!.alternate_actors.length > 0"
+        >
+          <span class="alt-actor-label">🔄 Alternate actors:</span>
+          <div class="alt-actors-list">
+            <span
+              class="alt-actor-value"
+              *ngFor="let actor of character()!.alternate_actors; let isLast = last"
+            >
+              {{ actor }}{{ !isLast ? ', ' : '' }}
+            </span>
+          </div>
+        </div>
+        <div
+          class="no-data"
+          *ngIf="
+            !character()?.actor &&
+            (!character()?.alternate_actors || character()!.alternate_actors.length === 0)
+          "
+        >
+          No acting information available
+        </div>
+      </div>
+    </div>
+
+    <!-- Alternate Names -->
+    <div
+      class="detail-card full-width"
+      *ngIf="character()?.alternate_names && character()!.alternate_names.length > 0"
+    >
+      <h2 class="card-title">📝 Also Known As</h2>
+      <div class="card-content">
+        <div class="alternate-names-list">
+          <span
+            class="alt-name"
+            *ngFor="let name of character()!.alternate_names; let isLast = last"
+          >
+            {{ name }}{{ !isLast ? ', ' : '' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="navigation-section">
+    <a routerLink="/characters" class="back-button">
+      <span class="back-arrow">←</span>
+      Back to Characters
+    </a>
+  </div>
+</div>

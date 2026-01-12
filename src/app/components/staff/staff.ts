@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { StaffService } from '../../shared/services/staff.service';
 import { inject } from '@angular/core';
 import { StaffList } from './staff-list/staff-list';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { httpResource } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-staff',
@@ -26,7 +29,7 @@ export class Staff implements OnInit {
   ngOnInit(): void {
     this.subscriptions.push(
       this.staffService.getAllProf().subscribe((allProf: StaffModel[]) => {
-        this.staff.set(allProf);
+        this.staff.set(allProf.filter((c) => c.hogwartsStaff === true));
       })
     );
     this.getActivatedRouteData();
@@ -44,3 +47,8 @@ export class Staff implements OnInit {
     this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 }
+// export class Staff {
+//   private staffService = inject(StaffService);
+//   protected staff = toSignal(this.staffService.getAllProf(), { initialValue: [] });
+//   protected staffRessource = httpResource(() => environment.baseUrl + '/characters/staff');
+// }
