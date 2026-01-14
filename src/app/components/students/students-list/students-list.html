@@ -1,0 +1,5 @@
+@for (student of students(); track student.id) {
+<p>{{ student.name }}</p>
+} @empty {
+<p>No students found.</p>
+}
