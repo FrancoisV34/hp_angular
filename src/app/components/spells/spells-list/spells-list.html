@@ -1,0 +1,72 @@
+<!-- Magical Spells Header -->
+<div class="spells-header">
+  <h1 class="spells-title">✨ Magical Spells</h1>
+  <p class="spells-subtitle">Discover the ancient incantations of wizardry</p>
+  <div class="magic-divider"></div>
+</div>
+
+<!-- Spells Loading State -->
+@if (!spells() || spells().length === 0) {
+<div class="spells-loading">
+  <div class="magic-circle">
+    <div class="magic-spark"></div>
+    <div class="magic-spark delay-1"></div>
+    <div class="magic-spark delay-2"></div>
+  </div>
+  <p class="loading-text">Conjuring spells...</p>
+</div>
+}
+
+<!-- Spells Grid -->
+@if (spells() && spells().length > 0) {
+<div class="spells-grid">
+  @for (spell of spells(); track spell.id; let i = $index) {
+  <div
+    class="spell-card"
+    [attr.data-spell-type]="getSpellType(spell.name)"
+    [style.animation-delay.ms]="i * 150"
+  >
+    <!-- Magical Glow Effect -->
+    <div class="spell-glow"></div>
+
+    <!-- Spell Icon -->
+    <div class="spell-icon">
+      <span class="spell-emoji">{{ getSpellEmoji(spell.name) }}</span>
+    </div>
+
+    <!-- Spell Content -->
+    <div class="spell-content">
+      <h3 class="spell-name">{{ spell.name }}</h3>
+      <p class="spell-description">{{ spell.description }}</p>
+
+      <!-- Spell Properties -->
+      <div class="spell-properties">
+        <span class="spell-difficulty" [class]="getSpellDifficulty(spell.name)">
+          {{ getSpellDifficultyText(spell.name) }}
+        </span>
+        <span class="spell-category">{{ getSpellCategory(spell.name) }}</span>
+      </div>
+    </div>
+
+    <!-- Magical Particles -->
+    <div class="spell-particles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+    </div>
+
+    <!-- Hover Effects -->
+    <div class="spell-hover-overlay">
+      <div class="cast-button">
+        <span class="cast-text">🪄 Cast Spell</span>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}
+
+<!-- Spells Footer -->
+<div class="spells-footer">
+  <p class="footer-text">⚡ Remember: "With great power comes great responsibility." ⚡</p>
+</div>

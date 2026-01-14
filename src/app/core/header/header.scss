@@ -60,6 +60,9 @@
   transition: all 0.2s ease;
   border-radius: 4px;
   position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: #d4af37;
@@ -81,6 +84,68 @@
     }
   }
 }
+
+// Dropdown styles
+.hp-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.hp-dropdown__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: 100%;
+  text-align: left;
+}
+
+.hp-dropdown__icon {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.hp-dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1a1a2e;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 0.3rem;
+}
+
+.hp-dropdown__item {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+  }
+}
+
+// House-specific colors for dropdown
+.hp-dropdown__item:nth-child(1) {
+  color: #d3a625;
+} /* Gryffindor */
+.hp-dropdown__item:nth-child(2) {
+  color: #f0c53e;
+} /* Hufflepuff */
+.hp-dropdown__item:nth-child(3) {
+  color: #0e5fa5;
+} /* Ravenclaw */
+.hp-dropdown__item:nth-child(4) {
+  color: #1a472a;
+} /* Slytherin */
 
 .hp-btn {
   display: inline-flex;

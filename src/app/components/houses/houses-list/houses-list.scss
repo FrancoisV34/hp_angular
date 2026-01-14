@@ -1,0 +1,1834 @@
+/* =============================================
+   ENCHANTED SCROLL - MAGICAL REALMS DISPLAY
+   Mystical chambers of wonder and enchantment!
+============================================= */
+
+.enchanted-scroll {
+  display: grid;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #f5f5dc 0%, #e6e6fa 50%, #fff8dc 100%);
+  animation: scrollUnfurl 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+}
+
+/* =============================================
+   MYSTICAL CHAMBERS - ENCHANTED HOUSE DOMAINS
+============================================= */
+.mystical-chamber {
+  background: rgba(248, 244, 233, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  animation: chamberManifest 1s ease-out forwards;
+  animation-delay: calc(var(--chamber-index, 0) * 0.2s);
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border-color: rgba(212, 175, 55, 0.6);
+  }
+}
+
+/* =============================================
+   CHAMBER HEADER - MAGICAL BANNERS
+============================================= */
+.chamber-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+
+  .chamber-title {
+    font-family: 'Harry Potter', Georgia, serif;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: 900;
+    position: relative;
+    display: inline-block;
+    animation: chamberTitleReveal 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    opacity: 1;
+    transform: translateY(30px) scale(0.8);
+
+    &::before {
+      content: '✦';
+      position: absolute;
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #d4af37;
+      animation: chamberStarTwinkle 3s ease-in-out infinite alternate;
+    }
+
+    &::after {
+      content: '✦';
+      position: absolute;
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #d4af37;
+      animation: chamberStarTwinkle 3s ease-in-out infinite alternate-reverse;
+    }
+  }
+
+  .house-banner {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    position: relative;
+    animation: bannerWave 4s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  }
+}
+
+/* =============================================
+   ENCHANTED MEMBERS GRID
+============================================= */
+.enchanted-members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================
+   MYSTICAL CARDS - MAGICAL CHARACTER DISPLAYS
+============================================= */
+.mystical-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 3px solid rgba(212, 175, 55, 0.4);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+  animation: cardMaterialize 0.6s ease-out forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.08s);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: rgba(212, 175, 55, 0.7);
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* =============================================
+   CARD COMPONENTS
+============================================= */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  position: relative;
+
+  .character-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    animation: avatarFloat 6s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, transparent 50%, rgba(212, 175, 55, 0.2) 100%);
+      animation: avatarGlow 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .character-name {
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5a2d0c;
+    margin: 0;
+    position: relative;
+    animation: nameShimmer 3s ease-in-out infinite;
+
+    &::after {
+      content: '✦';
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #d4af37;
+      opacity: 0.7;
+      animation: nameSparkle 2s ease-in-out infinite alternate;
+    }
+  }
+}
+
+.card-body {
+  .character-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(212, 175, 55, 0.1);
+        border-left-color: rgba(212, 175, 55, 0.6);
+        transform: translateX(5px);
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: #8b4513;
+        min-width: 80px;
+      }
+
+      .info-value {
+        color: #6b462c;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.card-magic {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+
+  .magic-sparkle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.8), transparent);
+    border-radius: 50%;
+    animation: magicSparklePulse 3s ease-in-out infinite;
+  }
+
+  .magic-glow {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, transparent 40%, rgba(212, 175, 55, 0.3) 100%);
+    border-radius: 50%;
+    animation: magicGlowRotate 8s linear infinite;
+  }
+}
+
+/* =============================================
+   HOUSE-SPECIFIC CHAMBER STYLING
+============================================= */
+
+/* GRYFFINDOR CHAMBER */
+.mystical-chamber.gryffindor-chamber {
+  background: linear-gradient(135deg, rgba(255, 252, 240, 0.99), rgba(218, 165, 32, 0.05));
+  border-left: 12px solid #f0c53e;
+  box-shadow: 0 20px 60px rgba(218, 165, 32, 0.25);
+
+  &::before {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 215, 0, 0.12) 0%,
+      rgba(240, 197, 62, 0.08) 40%,
+      rgba(218, 165, 32, 0.06) 70%,
+      transparent 100%
+    );
+    animation: hufflepuffChamberGlow 22s ease-in-out infinite;
+  }
+
+  .chamber-title {
+    background: linear-gradient(45deg, #ffd700, #f0c53e, #daa520, #b8860b);
+    background-size: 600% 600%;
+    animation: hufflepuffChamberTitle 6s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::before,
+    &::after {
+      content: '☀️';
+      animation: hufflepuffChamberSun 5s ease-in-out infinite;
+    }
+  }
+
+  .house-banner {
+    background: linear-gradient(90deg, #ffd700, #f0c53e, #daa520, #b8860b);
+    animation: hufflepuffBannerWarmth 4s ease-in-out infinite;
+  }
+
+  // &:hover {
+  //   animation: hufflepuffChamberWarmth 2.5s ease-in-out infinite;
+  // }
+}
+
+/* HUFFLEPUFF CHAMBER */
+.mystical-chamber.hufflepuff-chamber {
+  background: linear-gradient(135deg, rgba(255, 252, 240, 0.99), rgba(218, 165, 32, 0.05));
+  border-left: 12px solid #f0c53e;
+  box-shadow: 0 20px 60px rgba(218, 165, 32, 0.25);
+
+  &::before {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 215, 0, 0.12) 0%,
+      rgba(240, 197, 62, 0.08) 40%,
+      rgba(218, 165, 32, 0.06) 70%,
+      transparent 100%
+    );
+    animation: hufflepuffChamberGlow 22s ease-in-out infinite;
+  }
+
+  .chamber-title {
+    background: linear-gradient(45deg, #ffd700, #f0c53e, #daa520, #b8860b);
+    background-size: 600% 600%;
+    animation: hufflepuffChamberTitle 6s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::before,
+    &::after {
+      content: '☀️';
+      animation: hufflepuffChamberSun 5s ease-in-out infinite;
+    }
+  }
+
+  .house-banner {
+    background: linear-gradient(90deg, #ffd700, #f0c53e, #daa520, #b8860b);
+    animation: hufflepuffBannerWarmth 4s ease-in-out infinite;
+  }
+
+  // &:hover {
+  //   animation: hufflepuffChamberWarmth 2.5s ease-in-out infinite;
+  // }
+}
+
+/* RAVENCLAW CHAMBER */
+.mystical-chamber.ravenclaw-chamber {
+  background: linear-gradient(135deg, rgba(245, 248, 255, 0.99), rgba(30, 144, 255, 0.05));
+  border-left: 12px solid #0e5fa5;
+  box-shadow: 0 20px 60px rgba(30, 144, 255, 0.25);
+
+  &::before {
+    background: linear-gradient(-45deg, rgba(14, 95, 165, 0.08), rgba(100, 149, 237, 0.06));
+    animation: ravenclawChamberFlow 25s ease-in-out infinite;
+  }
+
+  .chamber-title {
+    background: linear-gradient(45deg, #0e5fa5, #7fffd4, #1e90ff, #6495ed);
+    background-size: 700% 700%;
+    animation: ravenclawChamberTitle 7s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::before,
+    &::after {
+      content: '⭐';
+      animation: ravenclawChamberStar 6s ease-in-out infinite;
+    }
+  }
+
+  .house-banner {
+    background: linear-gradient(90deg, #0e5fa5, #7fffd4, #1e90ff, #6495ed);
+    animation: ravenclawBannerFlow 5s ease-in-out infinite;
+  }
+
+  // &:hover {
+  //   animation: ravenclawChamberWisdom 3s ease-in-out infinite;
+  // }
+}
+
+/* SLYTHERIN CHAMBER */
+.mystical-chamber.slytherin-chamber {
+  background: linear-gradient(135deg, rgba(245, 252, 248, 0.99), rgba(34, 139, 34, 0.05));
+  border-left: 12px solid #228b22;
+  box-shadow: 0 20px 60px rgba(34, 139, 34, 0.25);
+
+  &::before {
+    background: linear-gradient(45deg, rgba(26, 71, 42, 0.09), rgba(60, 179, 113, 0.07));
+    animation: slytherinChamberSerpent 20s ease-in-out infinite;
+  }
+
+  .chamber-title {
+    background: linear-gradient(45deg, #228b22, #9acd32, #2e8b57, #3cb371);
+    background-size: 800% 800%;
+    animation: slytherinChamberTitle 8s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::before,
+    &::after {
+      content: '🐍';
+      animation: slytherinChamberSnake 7s ease-in-out infinite;
+    }
+  }
+
+  .house-banner {
+    background: linear-gradient(90deg, #228b22, #9acd32, #2e8b57, #3cb371);
+    animation: slytherinBannerPower 6s ease-in-out infinite;
+  }
+
+  // &:hover {
+  //   animation: slytherinChamberPower 3.5s ease-in-out infinite;
+  // }
+}
+
+/* =============================================
+   HOUSE-SPECIFIC CARD STYLING
+============================================= */
+.mystical-card.gryffindor-card {
+  border-top: 6px solid #d3a625;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 245, 235, 0.96));
+
+  .character-name {
+    color: #8b4513;
+  }
+
+  &:hover {
+    box-shadow: 0 25px 70px rgba(139, 69, 19, 0.4);
+    // animation: gryffindorCardHeat 2s ease-in-out infinite;
+  }
+}
+
+.mystical-card.hufflepuff-card {
+  border-top: 6px solid #f0c53e;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 252, 240, 0.96));
+
+  .character-name {
+    color: #daa520;
+  }
+
+  &:hover {
+    box-shadow: 0 25px 70px rgba(218, 165, 32, 0.4);
+    // animation: hufflepuffCardWarmth 2.2s ease-in-out infinite;
+  }
+}
+
+.mystical-card.ravenclaw-card {
+  border-top: 6px solid #0e5fa5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 248, 255, 0.96));
+
+  .character-name {
+    color: #1e90ff;
+  }
+
+  &:hover {
+    box-shadow: 0 25px 70px rgba(30, 144, 255, 0.4);
+    // animation: ravenclawCardWisdom 2.4s ease-in-out infinite;
+  }
+}
+
+.mystical-card.slytherin-card {
+  border-top: 6px solid #228b22;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 252, 248, 0.96));
+
+  .character-name {
+    color: #2e8b57;
+  }
+
+  &:hover {
+    box-shadow: 0 25px 70px rgba(34, 139, 34, 0.4);
+    // animation: slytherinCardPower 2.6s ease-in-out infinite;
+  }
+}
+
+/* =============================================
+   HOUSE-SPECIFIC AVATARS
+============================================= */
+.avatar-gryffindor {
+  background: radial-gradient(circle, #d3a625 0%, #b8860b 50%, #8b4513 100%);
+}
+
+.avatar-hufflepuff {
+  background: radial-gradient(circle, #ffd700 0%, #f0c53e 50%, #daa520 100%);
+}
+
+.avatar-ravenclaw {
+  background: radial-gradient(circle, #0e5fa5 0%, #1e90ff 50%, #6495ed 100%);
+}
+
+.avatar-slytherin {
+  background: radial-gradient(circle, #228b22 0%, #2e8b57 50%, #3cb371 100%);
+}
+
+/* =============================================
+   HOUSE BANNERS
+============================================= */
+.banner-gryffindor {
+  background: linear-gradient(90deg, #d3a625, #ffd700, #cd853f, #b8860b);
+}
+
+.banner-hufflepuff {
+  background: linear-gradient(90deg, #ffd700, #f0c53e, #daa520, #b8860b);
+}
+
+.banner-ravenclaw {
+  background: linear-gradient(90deg, #0e5fa5, #7fffd4, #1e90ff, #6495ed);
+}
+
+.banner-slytherin {
+  background: linear-gradient(90deg, #228b22, #9acd32, #2e8b57, #3cb371);
+}
+
+/* =============================================
+   EMPTY STATES
+============================================= */
+.empty-chamber {
+  text-align: center;
+  padding: 60px 30px;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 15px;
+  border: 2px dashed rgba(212, 175, 55, 0.3);
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: emptyIconFloat 4s ease-in-out infinite;
+  }
+
+  .empty-message {
+    font-size: 1.2rem;
+    color: #8b4513;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+
+  .empty-particles {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    .particle {
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.6), transparent);
+      border-radius: 50%;
+      animation: emptyParticleDance 3s ease-in-out infinite;
+
+      &:nth-child(odd) {
+        animation-delay: -1s;
+      }
+
+      &:nth-child(3n) {
+        animation-delay: -2s;
+      }
+    }
+  }
+}
+
+.no-houses-realm {
+  text-align: center;
+  padding: 100px 50px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  border-radius: 25px;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+
+  .realm-empty-icon {
+    font-size: 5rem;
+    margin-bottom: 30px;
+    animation: realmEmptyFloat 6s ease-in-out infinite;
+  }
+
+  .realm-empty-title {
+    font-size: 2.5rem;
+    color: #8b4513;
+    margin-bottom: 20px;
+    font-family: 'Harry Potter', Georgia, serif;
+  }
+
+  .realm-empty-message {
+    font-size: 1.3rem;
+    color: #6b462c;
+    font-style: italic;
+  }
+}
+
+/* =============================================
+   NEW ANIMATIONS - MAGICAL EFFECTS
+============================================= */
+@keyframes scrollUnfurl {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95) rotateX(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes chamberManifest {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9) rotateX(-10deg);
+    filter: blur(5px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(1.02) rotateX(2deg);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes chamberBackgroundShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes chamberTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes chamberStarTwinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.3) rotate(180deg);
+  }
+}
+
+@keyframes bannerWave {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.05);
+  }
+}
+
+@keyframes cardMaterialize {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.85) rotateX(-15deg);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes avatarFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(4px) rotate(-2deg);
+  }
+}
+
+@keyframes avatarGlow {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes nameShimmer {
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes nameSparkle {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+
+@keyframes magicSparklePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes magicGlowRotate {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(-10%, -10%) rotate(360deg) scale(1);
+  }
+}
+
+/* House-specific chamber animations */
+@keyframes gryffindorChamberFlames {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes gryffindorChamberTitle {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gryffindorChamberFire {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.4) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes gryffindorBannerFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.9;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes gryffindorChamberHeat {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.1) contrast(1.05);
+  }
+}
+
+@keyframes hufflepuffChamberGlow {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+  }
+}
+
+@keyframes hufflepuffChamberTitle {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hufflepuffChamberSun {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes hufflepuffBannerWarmth {
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.05) saturate(1.1);
+  }
+}
+
+@keyframes hufflepuffChamberWarmth {
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.05) saturate(1.1);
+  }
+}
+
+@keyframes ravenclawChamberFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes ravenclawChamberTitle {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes ravenclawChamberStar {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.3) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes ravenclawBannerFlow {
+  0%,
+  100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.02) hue-rotate(5deg);
+  }
+}
+
+@keyframes ravenclawChamberWisdom {
+  0%,
+  100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.02) hue-rotate(2deg);
+  }
+}
+
+@keyframes slytherinChamberSerpent {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(90deg);
+  }
+  50% {
+    transform: scale(0.9) rotate(180deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(270deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes slytherinChamberTitle {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes slytherinChamberSnake {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.4) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slytherinBannerPower {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(0.98) contrast(1.02);
+  }
+}
+
+@keyframes slytherinChamberPower {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(0.98) contrast(1.02);
+  }
+}
+
+/* Card animations */
+@keyframes gryffindorCardHeat {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(139, 69, 19, 0.3);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(211, 166, 37, 0.4);
+  }
+}
+
+@keyframes hufflepuffCardWarmth {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(218, 165, 32, 0.3);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes ravenclawCardWisdom {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(30, 144, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(100, 149, 237, 0.4);
+  }
+}
+
+@keyframes slytherinCardPower {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(34, 139, 34, 0.3);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(60, 179, 113, 0.4);
+  }
+}
+
+/* Empty state animations */
+@keyframes emptyIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes emptyParticleDance {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes realmEmptyFloat {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+/* =============================================
+   RESPONSIVE MAGICAL DESIGN
+============================================= */
+@media (max-width: 1400px) {
+  .enchanted-members {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .mystical-chamber {
+    padding: 40px;
+  }
+
+  .chamber-title {
+    font-size: 2.5rem;
+  }
+
+  .enchanted-members {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .enchanted-scroll {
+    gap: 40px;
+  }
+
+  .mystical-chamber {
+    padding: 30px 20px;
+  }
+
+  .chamber-header {
+    margin-bottom: 40px;
+  }
+
+  .chamber-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .enchanted-members {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .mystical-card {
+    padding: 25px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .character-name {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mystical-chamber {
+    padding: 25px 15px;
+  }
+
+  .chamber-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .mystical-card {
+    padding: 20px;
+  }
+
+  .character-name {
+    font-size: 1.2rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .info-label {
+    min-width: auto;
+  }
+}
+
+/* =============================================
+   HOUSE SECTIONS - MAGICAL CONTAINERS
+============================================= */
+.house-section {
+  background: rgba(248, 244, 233, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  animation: sectionEntrance 1s ease-out forwards;
+  animation-delay: calc(var(--section-index, 0) * 0.2s);
+  opacity: 1;
+  transform: translateY(30px) scale(0.95);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(1deg) translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    border-color: rgba(212, 175, 55, 0.6);
+
+    &::before {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
+  }
+
+  h2 {
+    color: #8b4513;
+    margin-bottom: 30px;
+    border-bottom: 4px solid #d4a76a;
+    padding-bottom: 20px;
+    font-family: 'Harry Potter', Georgia, serif;
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+    animation: titleSlide 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-30px);
+
+    &::after {
+      content: '✦';
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: #d4af37;
+      opacity: 0.8;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+  }
+}
+
+/* =============================================
+   HOUSE-SPECIFIC MAGICAL THEMING
+============================================= */
+
+/* GRYFFINDOR - BLAZING FIRE */
+.house-section.gryffindor {
+  background: rgba(255, 245, 235, 0.99);
+  border-left: 10px solid #d3a625;
+  box-shadow: 0 15px 45px rgba(139, 69, 19, 0.2);
+
+  &::before {
+    background: linear-gradient(135deg, rgba(211, 166, 37, 0.08), rgba(139, 69, 19, 0.05)),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M50,20 Q100,5 150,20 Q170,50 150,80 Q100,95 50,80 Q30,50 50,20" fill="rgba(211,166,37,0.1)"/><path d="M60,30 Q100,15 140,30 Q160,60 140,90 Q100,105 60,90 Q40,60 60,30" fill="rgba(139,69,19,0.08)"/><circle cx="100" cy="60" r="15" fill="rgba(255,215,0,0.2)"/></svg>');
+  }
+
+  h2 {
+    color: #d3a625;
+    border-bottom-color: #b8860b;
+    text-shadow: 3px 3px 8px rgba(139, 69, 19, 0.3);
+
+    &::after {
+      content: '🦁';
+      color: #cd853f;
+      animation: lionRoar 4s ease-in-out infinite;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 30px 80px rgba(139, 69, 19, 0.3);
+    animation: gryffindorHeat 2s ease-in-out infinite;
+  }
+}
+
+/* HUFFLEPUFF - WARM LIGHT */
+.house-section.hufflepuff {
+  background: rgba(255, 252, 240, 0.99);
+  border-left: 10px solid #f0c53e;
+  box-shadow: 0 15px 45px rgba(218, 165, 32, 0.2);
+
+  &::before {
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 215, 0, 0.15) 0%,
+        rgba(240, 197, 62, 0.08) 50%
+      ),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,215,0,0.1)" stroke-width="8"/><circle cx="100" cy="100" r="60" fill="none" stroke="rgba(240,197,62,0.08)" stroke-width="6"/><circle cx="100" cy="100" r="40" fill="none" stroke="rgba(218,165,32,0.06)" stroke-width="4"/><circle cx="100" cy="100" r="20" fill="rgba(184,134,11,0.04)" stroke-width="2"/></svg>');
+  }
+
+  h2 {
+    color: #f0c53e;
+    border-bottom-color: #ffd700;
+    text-shadow: 3px 3px 8px rgba(218, 165, 32, 0.3);
+
+    &::after {
+      content: '🐻';
+      color: #daa520;
+      animation: bearGlow 3s ease-in-out infinite alternate;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 30px 80px rgba(218, 165, 32, 0.3);
+    animation: hufflepuffWarmth 1.5s ease-in-out infinite;
+  }
+}
+
+/* RAVENCLAW - MYSTERIOUS WISDOM */
+.house-section.ravenclaw {
+  background: rgba(245, 248, 255, 0.99);
+  border-left: 10px solid #0e5fa5;
+  box-shadow: 0 15px 45px rgba(30, 144, 255, 0.2);
+
+  &::before {
+    background: linear-gradient(-45deg, rgba(14, 95, 165, 0.06), rgba(70, 130, 180, 0.04)),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect x="20" y="20" width="160" height="160" fill="none" stroke="rgba(14,95,165,0.1)" stroke-width="4"/><path d="M30,30 L170,30 L170,170 L30,170 Z" fill="none" stroke="rgba(30,144,255,0.08)" stroke-width="2"/><line x1="10" y1="10" x2="190" y2="190" stroke="rgba(14,95,165,0.05)" stroke-width="1"/><line x1="190" y1="10" x2="10" y2="190" stroke="rgba(14,95,165,0.05)" stroke-width="1"/><circle cx="100" cy="100" r="60" fill="none" stroke="rgba(100,149,237,0.03)" stroke-width="0.5"/></svg>');
+  }
+
+  h2 {
+    color: #0e5fa5;
+    border-bottom-color: #1e90ff;
+    text-shadow: 3px 3px 8px rgba(30, 144, 255, 0.3);
+
+    &::after {
+      content: '🦅';
+      color: #4682b4;
+      animation: eagleFlight 5s ease-in-out infinite;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 30px 80px rgba(30, 144, 255, 0.3);
+    animation: ravenclawWisdom 2.5s ease-in-out infinite;
+  }
+}
+
+/* SLYTHERIN - DARK POWER */
+.house-section.slytherin {
+  background: rgba(245, 252, 248, 0.99);
+  border-left: 10px solid #228b22;
+  box-shadow: 0 15px 45px rgba(34, 139, 34, 0.2);
+
+  &::before {
+    background: linear-gradient(45deg, rgba(26, 71, 42, 0.07), rgba(34, 139, 34, 0.05)),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M10,100 Q50,20 100,100 Q150,180 190,100" fill="none" stroke="rgba(34,139,34,0.12)" stroke-width="6"/><path d="M20,100 Q60,40 100,100 Q140,160 180,100" fill="none" stroke="rgba(46,139,87,0.1)" stroke-width="4"/><path d="M30,100 Q70,60 100,100 Q130,140 170,100" fill="none" stroke="rgba(60,179,113,0.08)" stroke-width="2"/><circle cx="100" cy="100" r="40" fill="none" stroke="rgba(34,139,34,0.05)" stroke-width="1"/></svg>');
+  }
+
+  h2 {
+    color: #228b22;
+    border-bottom-color: #32cd32;
+    text-shadow: 3px 3px 8px rgba(34, 139, 34, 0.3);
+
+    &::after {
+      content: '🐍';
+      color: #2e8b57;
+      animation: snakeSlither 6s ease-in-out infinite;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 30px 80px rgba(34, 139, 34, 0.3);
+    animation: slytherinPower 3s ease-in-out infinite;
+  }
+}
+
+/* =============================================
+   CHARACTER CARDS - MAGICAL MASTERPIECE
+============================================= */
+.house-members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.character-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  animation: cardEntrance 0.8s ease-out forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.1s);
+  opacity: 1;
+  transform: translateY(20px) scale(0.9);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.8), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-12px) scale(1.03) rotateX(2deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    border-color: rgba(212, 175, 55, 0.8);
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    &::after {
+      opacity: 1;
+    }
+
+    h3 {
+      transform: translateY(-2px);
+    }
+
+    p {
+      transform: translateY(-1px);
+    }
+  }
+
+  h3 {
+    color: #5a2d0c;
+    margin-bottom: 18px;
+    font-size: 1.3rem;
+    font-family: Georgia, serif;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+
+    &::after {
+      content: '✦';
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 0.9rem;
+      color: #d4af37;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+      transform: rotate(180deg) scale(1.2);
+      opacity: 1;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+    color: #6b462c;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+
+    strong {
+      color: #8b4513;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    &:hover strong {
+      color: #d4af37;
+    }
+  }
+
+  &:hover p {
+    color: #8b4513;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+}
+
+/* =============================================
+   HOUSE-SPECIFIC CARD STYLING
+============================================= */
+.character-card.gryffindor {
+  border-top: 5px solid #d3a625;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 245, 235, 0.95));
+
+  h3 {
+    color: #8b4513;
+    border-bottom-color: #d3a625;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 50px rgba(139, 69, 19, 0.3);
+    animation: gryffindorCardGlow 2s ease-in-out infinite;
+  }
+}
+
+.character-card.hufflepuff {
+  border-top: 5px solid #f0c53e;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 252, 240, 0.95));
+
+  h3 {
+    color: #daa520;
+    border-bottom-color: #f0c53e;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 50px rgba(218, 165, 32, 0.3);
+    animation: hufflepuffCardGlow 1.8s ease-in-out infinite;
+  }
+}
+
+.character-card.ravenclaw {
+  border-top: 5px solid #0e5fa5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 248, 255, 0.95));
+
+  h3 {
+    color: #1e90ff;
+    border-bottom-color: #0e5fa5;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 50px rgba(30, 144, 255, 0.3);
+    animation: ravenclawCardGlow 2.2s ease-in-out infinite;
+  }
+}
+
+.character-card.slytherin {
+  border-top: 5px solid #228b22;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 252, 248, 0.95));
+
+  h3 {
+    color: #2e8b57;
+    border-bottom-color: #228b22;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 50px rgba(34, 139, 34, 0.3);
+    animation: slytherinCardGlow 2.5s ease-in-out infinite;
+  }
+}
+
+/* =============================================
+   ADVANCED ANIMATIONS - MAGICAL EFFECTS
+============================================= */
+@keyframes listEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* House-specific animations */
+@keyframes gryffindorHeat {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.1) contrast(1.05);
+  }
+}
+
+@keyframes hufflepuffWarmth {
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.05) saturate(1.1);
+  }
+}
+
+@keyframes ravenclawWisdom {
+  0%,
+  100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.02) hue-rotate(2deg);
+  }
+}
+
+@keyframes slytherinPower {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(0.98) contrast(1.02);
+  }
+}
+
+@keyframes lionRoar {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+@keyframes bearGlow {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes eagleFlight {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) translateX(3px) scale(1.05);
+  }
+}
+
+@keyframes snakeSlither {
+  0%,
+  100% {
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-50%) rotate(5deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-50%) rotate(-5deg) scale(0.95);
+  }
+  75% {
+    transform: translateY(-50%) rotate(3deg) scale(1.05);
+  }
+}
+
+@keyframes gryffindorCardGlow {
+  0%,
+  100% {
+    box-shadow: 0 15px 40px rgba(139, 69, 19, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 50px rgba(211, 166, 37, 0.4);
+  }
+}
+
+@keyframes hufflepuffCardGlow {
+  0%,
+  100% {
+    box-shadow: 0 15px 40px rgba(218, 165, 32, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes ravenclawCardGlow {
+  0%,
+  100% {
+    box-shadow: 0 15px 40px rgba(30, 144, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 50px rgba(100, 149, 237, 0.4);
+  }
+}
+
+@keyframes slytherinCardGlow {
+  0%,
+  100% {
+    box-shadow: 0 15px 40px rgba(34, 139, 34, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 50px rgba(60, 179, 113, 0.4);
+  }
+}
+
+/* =============================================
+   FLOATING MAGICAL EFFECTS
+============================================= */
+.house-section::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);
+  border-radius: 50%;
+  animation: magicalFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes magicalFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(-5px, -10px) scale(1.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(10px, -5px) scale(0.9);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translate(-8px, 8px) scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+/* =============================================
+   RESPONSIVE MAGICAL DESIGN
+============================================= */
+@media (max-width: 1200px) {
+  .house-members {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .houses-list {
+    gap: 40px;
+  }
+
+  .house-section {
+    padding: 30px 20px;
+  }
+
+  .house-members {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .character-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .house-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .character-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .character-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* =============================================
+   HOUSE CREST DECORATIONS
+============================================= */
+.house-crest {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: crestGlow 10s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+}
+
+.house-section:hover .house-crest {
+  opacity: 0.4;
+  animation: crestGlow 5s ease-in-out infinite;
+}
+
+@keyframes crestGlow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+.gryffindor .house-crest {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 Q95,50 80,80 Q50,95 20,80 Q5,50 20,20" fill="%23d3a625"/><circle cx="50" cy="40" r="8" fill="%238b4513"/></svg>');
+}
+
+.hufflepuff .house-crest {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23f0c53e" stroke-width="8"/><circle cx="50" cy="50" r="15" fill="%23daa520"/></svg>');
+}
+
+.ravenclaw .house-crest {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" fill="none" stroke="%230e5fa5" stroke-width="6"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="%231e90ff"/><line x1="20" y1="20" x2="80" y2="80" stroke="%230e5fa5" stroke-width="2"/><line x1="80" y1="20" x2="20" y2="80" stroke="%230e5fa5" stroke-width="2"/></svg>');
+}
+
+.slytherin .house-crest {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M10,50 Q30,20 50,50 Q70,80 90,50" fill="none" stroke="%23228b22" stroke-width="8"/><path d="M20,50 Q40,30 60,50 Q80,70 90,50" fill="none" stroke="%232e8b57" stroke-width="4"/><circle cx="50" cy="50" r="5" fill="%2332cd32"/></svg>');
+}

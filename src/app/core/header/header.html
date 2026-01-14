@@ -8,9 +8,28 @@
 
   <nav class="hp-topbar__nav" aria-label="Navigation principale">
     <a class="hp-link" routerLink="/characters" routerLinkActive="is-active">Personnages</a>
-    <a class="hp-link" routerLink="/houses" routerLinkActive="is-active">Maisons</a>
+    <div class="hp-dropdown" (clickOutside)="isHousesDropdownOpen = false">
+      <button
+        class="hp-link hp-dropdown__toggle"
+        [class.is-active]="isHousesDropdownOpen"
+        (click)="toggleHousesDropdown()"
+      >
+        Maisons
+        <span class="hp-dropdown__icon">▼</span>
+      </button>
+      @if (isHousesDropdownOpen) {
+      <div class="hp-dropdown__menu">
+        @for (house of allHouses; track house) {
+        <a class="hp-dropdown__item" (click)="navigateToHouse(house)">
+          {{ house }}
+        </a>
+        }
+      </div>
+      }
+    </div>
     <a class="hp-link" routerLink="/spells" routerLinkActive="is-active">Sortilèges</a>
     <a class="hp-link" routerLink="/staff" routerLinkActive="is-active">Professeurs</a>
+    <a class="hp-link" routerLink="/students" routerLinkActive="is-active">Élèves</a>
   </nav>
 
   <div class="hp-topbar__right">

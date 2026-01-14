@@ -6,10 +6,11 @@ import { Observable, Subscription } from 'rxjs';
 import { CharactersList } from './characters-list/characters-list';
 import { ActivatedRoute, Data } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { AddCharacter } from '../add-character/add-character';
 
 @Component({
   selector: 'app-characters',
-  imports: [CharactersList],
+  imports: [CharactersList, AddCharacter],
   templateUrl: './characters.html',
   styleUrl: './characters.scss',
 })
@@ -23,6 +24,13 @@ export class Characters implements OnInit {
   });
 
   protected characters = signal<CharacterModel[]>([]);
+
+  protected showAddCharacter = signal(false);
+
+  protected toggleAddCharacter = () => {
+    this.showAddCharacter.update((show) => !show);
+  };
+
   constructor(private characterService: CharacterService) {
     effect(() => {
       console.log('Current number of characters:', this.routeData());

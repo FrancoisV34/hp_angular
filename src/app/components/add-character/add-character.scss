@@ -1,0 +1,637 @@
+/* =============================================
+   ADD CHARACTER FORM - MAGICAL CHARACTER CREATION
+   A mystical form for adding new Harry Potter characters!
+============================================= */
+
+.add-character-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f5dc 0%, #e6e6fa 50%, #fff8dc 100%);
+  min-height: 100vh;
+  position: relative;
+
+  /* Magical background particles */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+        circle at 20% 80%,
+        rgba(212, 175, 55, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+/* =============================================
+   CHARACTER FORM - MAIN FORM CONTAINER
+============================================= */
+.character-form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  /* Magical border glow */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(
+      45deg,
+      rgba(212, 175, 55, 0.4),
+      rgba(212, 175, 55, 0.2),
+      rgba(212, 175, 55, 0.4),
+      rgba(212, 175, 55, 0.1),
+      rgba(212, 175, 55, 0.4)
+    );
+    border-radius: 28px;
+    z-index: -1;
+    animation: magicalBorderGlow 8s ease-in-out infinite;
+  }
+
+  /* Floating magical particles inside form */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.6), transparent);
+    border-radius: 50%;
+    animation: floatingParticle 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* =============================================
+   FORM TITLE - MAGICAL HEADER
+============================================= */
+.form-title {
+  font-family: 'Harry Potter', Georgia, serif;
+  font-size: 3.5rem;
+  text-align: center;
+  color: #5a2d0c;
+  margin-bottom: 50px;
+  text-shadow: 3px 3px 8px rgba(212, 175, 55, 0.3);
+  position: relative;
+  letter-spacing: 3px;
+
+  /* Decorative stars */
+  &::before,
+  &::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: #d4af37;
+    animation: starTwinkle 3s ease-in-out infinite alternate;
+  }
+
+  &::before {
+    left: -80px;
+  }
+
+  &::after {
+    right: -80px;
+  }
+}
+
+/* =============================================
+   FORM SECTIONS - ORGANIZED MAGICAL AREAS
+============================================= */
+.form-section {
+  margin-bottom: 50px;
+  padding: 35px;
+  background: rgba(212, 175, 55, 0.02);
+  border-radius: 20px;
+  border: 2px solid rgba(212, 175, 55, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+  }
+
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
+}
+
+.section-title {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  color: #8b4513;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    border-radius: 2px;
+  }
+}
+
+/* =============================================
+   FORM GROUPS - INDIVIDUAL FIELD CONTAINERS
+============================================= */
+.form-group {
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* =============================================
+   FORM LABELS - MAGICAL FIELD LABELS
+============================================= */
+.form-label {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5a2d0c;
+  margin-bottom: 8px;
+  position: relative;
+
+  /* Required field indicator */
+  &:has(+ .form-input[required]),
+  &:has(+ .form-select[required]) {
+    &::after {
+      content: '*';
+      color: #d32f2f;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  }
+}
+
+/* =============================================
+   FORM INPUTS - MAGICAL INPUT FIELDS
+============================================= */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #5a2d0c;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-1px);
+  }
+
+  &::placeholder {
+    color: #8b7355;
+    opacity: 0.7;
+  }
+
+  /* Error state */
+  &.error {
+    border-color: #d32f2f;
+    background: rgba(244, 67, 54, 0.05);
+
+    &:focus {
+      border-color: #d32f2f;
+      box-shadow: 0 0 20px rgba(211, 47, 47, 0.3);
+    }
+  }
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 18px;
+  padding-right: 50px;
+
+  &:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b4513' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+}
+
+/* =============================================
+   CHECKBOXES - MAGICAL TOGGLE SWITCHES
+============================================= */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+}
+
+.form-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #d4af37;
+  cursor: pointer;
+  position: relative;
+
+  &:checked {
+    background: #d4af37;
+    border-color: #d4af37;
+  }
+
+  &:focus {
+    outline: 2px solid rgba(212, 175, 55, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+.checkbox-label {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #5a2d0c;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* =============================================
+   WAND GROUP - SPECIAL MAGICAL INPUT GROUP
+============================================= */
+.wand-group {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* =============================================
+   ERROR MESSAGES - MAGICAL WARNINGS
+============================================= */
+.error-message {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  font-family: Georgia, serif;
+  margin-top: 5px;
+  font-style: italic;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+/* =============================================
+   FORM ACTIONS - MAGICAL SUBMIT BUTTON
+============================================= */
+.form-actions {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 3px solid rgba(212, 175, 55, 0.2);
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #daa520 100%);
+  color: #5a2d0c;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 15px;
+  font-family: 'Harry Potter', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Magical sparkle effect */
+  &::after {
+    content: '✨';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: buttonSparkle 2s ease-in-out infinite;
+  }
+}
+
+/* =============================================
+   ANIMATIONS - MAGICAL EFFECTS
+============================================= */
+@keyframes magicalBorderGlow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes floatingParticle {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-15px, -10px) scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2) rotate(180deg);
+  }
+}
+
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes buttonSparkle {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.3);
+  }
+}
+
+/* =============================================
+   RESPONSIVE DESIGN - MAGICAL ADAPTATION
+============================================= */
+@media (max-width: 1024px) {
+  .add-character-container {
+    padding: 30px 15px;
+  }
+
+  .character-form {
+    padding: 40px 30px;
+  }
+
+  .form-title {
+    font-size: 3rem;
+    letter-spacing: 2px;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .form-section {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-character-container {
+    padding: 20px 10px;
+  }
+
+  .character-form {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .form-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .form-section {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wand-group {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .submit-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-form {
+    padding: 25px 15px;
+  }
+
+  .form-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .form-section {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+
+  .submit-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* =============================================
+   DARK MODE SUPPORT - OPTIONAL MAGICAL THEME
+============================================= */
+@media (prefers-color-scheme: dark) {
+  .add-character-container {
+    background: linear-gradient(135deg, #2c1810 0%, #1a1a2e 50%, #16213e 100%);
+  }
+
+  .character-form {
+    background: rgba(30, 30, 46, 0.95);
+    border-color: rgba(212, 175, 55, 0.4);
+    color: #e6e6fa;
+  }
+
+  .form-title {
+    color: #f5f5dc;
+  }
+
+  .section-title {
+    color: #daa520;
+  }
+
+  .form-label {
+    color: #e6e6fa;
+  }
+
+  .form-input,
+  .form-select {
+    background: rgba(45, 45, 61, 0.9);
+    border-color: rgba(212, 175, 55, 0.4);
+    color: #e6e6fa;
+
+    &::placeholder {
+      color: #b0b0c0;
+    }
+
+    &:focus {
+      background: rgba(55, 55, 71, 0.95);
+      border-color: #daa520;
+    }
+  }
+
+  .checkbox-label {
+    color: #e6e6fa;
+  }
+
+  .form-section {
+    background: rgba(45, 45, 61, 0.3);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+}

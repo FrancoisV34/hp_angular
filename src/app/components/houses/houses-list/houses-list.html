@@ -1,0 +1,165 @@
+<div class="enchanted-scroll">
+  @if (currentHouse()) {
+  <!-- Single House Enchanted Chamber -->
+  <div
+    class="mystical-chamber"
+    [class.gryffindor-chamber]="currentHouse() === 'Gryffindor'"
+    [class.hufflepuff-chamber]="currentHouse() === 'Hufflepuff'"
+    [class.ravenclaw-chamber]="currentHouse() === 'Ravenclaw'"
+    [class.slytherin-chamber]="currentHouse() === 'Slytherin'"
+  >
+    <!-- Chamber Header -->
+    <div class="chamber-header">
+      <h2 class="chamber-title">{{ currentHouse() }} House</h2>
+      <div class="house-banner" [class]="'banner-' + (currentHouse()?.toLowerCase() || '')"></div>
+    </div>
+
+    <!-- Enchanted Members Grid -->
+    <div class="enchanted-members">
+      @for (character of houses(); track character.id) {
+      <div
+        class="mystical-card"
+        [class.gryffindor-card]="character.house === 'Gryffindor'"
+        [class.hufflepuff-card]="character.house === 'Hufflepuff'"
+        [class.ravenclaw-card]="character.house === 'Ravenclaw'"
+        [class.slytherin-card]="character.house === 'Slytherin'"
+      >
+        <!-- Card Header -->
+        <div class="card-header">
+          <div
+            class="character-avatar"
+            [class]="'avatar-' + (character.house?.toLowerCase() || '')"
+          ></div>
+          <h3 class="character-name">{{ character.name }}</h3>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="character-info">
+            <div class="info-item">
+              <span class="info-label">🏠 House:</span>
+              <span class="info-value">{{ character.house }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🧬 Species:</span>
+              <span class="info-value">{{ character.species }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">⚧ Gender:</span>
+              <span class="info-value">{{ character.gender }}</span>
+            </div>
+            @if (character.dateOfBirth) {
+            <div class="info-item">
+              <span class="info-label">🎂 Born:</span>
+              <span class="info-value">{{ character.dateOfBirth }}</span>
+            </div>
+            } @if (character.ancestry) {
+            <div class="info-item">
+              <span class="info-label">👪 Ancestry:</span>
+              <span class="info-value">{{ character.ancestry }}</span>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Magical Effects -->
+        <div class="card-magic">
+          <div class="magic-sparkle"></div>
+          <div class="magic-glow"></div>
+        </div>
+      </div>
+      } @empty {
+      <div class="empty-chamber">
+        <div class="empty-icon">🏰</div>
+        <p class="empty-message">No characters found for {{ currentHouse() }} house.</p>
+        <div class="empty-particles">
+          <div class="particle" *ngFor="let i of [1, 2, 3, 4, 5]"></div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  } @else {
+  <!-- Multi-House Enchanted Realms -->
+  @for (house of allHouses(); track house) {
+  <div
+    class="mystical-chamber"
+    [class.gryffindor-chamber]="house === 'Gryffindor'"
+    [class.hufflepuff-chamber]="house === 'Hufflepuff'"
+    [class.ravenclaw-chamber]="house === 'Ravenclaw'"
+    [class.slytherin-chamber]="house === 'Slytherin'"
+  >
+    <!-- Chamber Header -->
+    <div class="chamber-header">
+      <h2 class="chamber-title">{{ house }}</h2>
+      <div class="house-banner" [class]="'banner-' + house.toLowerCase()"></div>
+    </div>
+
+    <!-- Enchanted Members Grid -->
+    <div class="enchanted-members">
+      @for (character of getCharactersByHouse(house); track character.id) {
+      <div
+        class="mystical-card"
+        [class.gryffindor-card]="character.house === 'Gryffindor'"
+        [class.hufflepuff-card]="character.house === 'Hufflepuff'"
+        [class.ravenclaw-card]="character.house === 'Ravenclaw'"
+        [class.slytherin-card]="character.house === 'Slytherin'"
+      >
+        <!-- Card Header -->
+        <div class="card-header">
+          <div
+            class="character-avatar"
+            [class]="'avatar-' + (character.house?.toLowerCase() || '')"
+          ></div>
+          <h3 class="character-name">{{ character.name }}</h3>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="character-info">
+            <div class="info-item">
+              <span class="info-label">🏠 House:</span>
+              <span class="info-value">{{ character.house }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🧬 Species:</span>
+              <span class="info-value">{{ character.species }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">⚧ Gender:</span>
+              <span class="info-value">{{ character.gender }}</span>
+            </div>
+            @if (character.dateOfBirth) {
+            <div class="info-item">
+              <span class="info-label">🎂 Born:</span>
+              <span class="info-value">{{ character.dateOfBirth }}</span>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Magical Effects -->
+        <div class="card-magic">
+          <div class="magic-sparkle"></div>
+          <div class="magic-glow"></div>
+        </div>
+      </div>
+      } @empty {
+      <div class="empty-chamber">
+        <div class="empty-icon">🏰</div>
+        <p class="empty-message">No characters found for this house.</p>
+        <div class="empty-particles">
+          <div class="particle" *ngFor="let i of [1, 2, 3, 4, 5]"></div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  } @empty {
+  <div class="no-houses-realm">
+    <div class="realm-empty-icon">🌌</div>
+    <h3 class="realm-empty-title">No Houses Available</h3>
+    <p class="realm-empty-message">The magical realms are currently empty.</p>
+  </div>
+  } }
+</div>

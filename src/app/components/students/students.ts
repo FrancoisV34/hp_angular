@@ -13,6 +13,7 @@ import { StudentsService } from '../../shared/services/student-service';
 })
 export class Students implements OnInit {
   protected students = signal<StudentsModel[]>([]);
+
   protected section = signal('');
   protected breadcrumb = signal('');
   protected subscriptions: Subscription[] = [];
