@@ -286,7 +286,6 @@
     animation: hufflepuffChamberTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     &::before,
     &::after {
@@ -328,7 +327,6 @@
     animation: hufflepuffChamberTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     &::before,
     &::after {
@@ -364,7 +362,6 @@
     animation: ravenclawChamberTitle 7s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     &::before,
     &::after {
@@ -400,7 +397,6 @@
     animation: slytherinChamberTitle 8s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     &::before,
     &::after {
@@ -831,11 +827,11 @@
 @keyframes hufflepuffChamberSun {
   0%,
   100% {
-    transform: translateY(-50%) scale(1) rotate(0deg);
+    transform: translateY(-50%) scale(1) rotate(-45deg);
     opacity: 0.8;
   }
   50% {
-    transform: translateY(-50%) scale(1.2) rotate(180deg);
+    transform: translateY(-50%) scale(1.2) rotate(45deg);
     opacity: 1;
   }
 }
@@ -944,11 +940,11 @@
 @keyframes slytherinChamberSnake {
   0%,
   100% {
-    transform: translateY(-50%) scale(1) rotate(0deg);
+    transform: translateY(-50%) scale(1) rotate(-45deg);
     opacity: 0.8;
   }
   50% {
-    transform: translateY(-50%) scale(1.4) rotate(180deg);
+    transform: translateY(-50%) scale(1.4) rotate(45deg);
     opacity: 1;
   }
 }

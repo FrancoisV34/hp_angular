@@ -1,268 +1,273 @@
-<div class="container">
-  <h2>Add New Character</h2>
+<div class="add-character-portal">
+  <div class="portal-container">
+    <header class="portal-header">
+      <h1 class="portal-title">Character Creation</h1>
+      <p class="portal-subtitle">Summon a new magical being into the wizarding world</p>
+    </header>
 
-  <form (ngSubmit)="onSubmit()">
-    <!-- Name -->
-    <div class="form-group">
-      <label for="name" class="form-label">Name *</label>
-      <input
-        [value]="name()"
-        (input)="name.set($any($event.target).value)"
-        id="name"
-        type="text"
-        class="form-control"
-        [class.is-invalid]="!nameValid()"
-      />
-      <small *ngIf="!nameValid()" class="text-danger"> Name must be at least 3 characters </small>
-    </div>
-
-    <!-- Gender -->
-    <div class="form-group">
-      <label for="gender" class="form-label">Gender</label>
-      <select
-        [value]="gender()"
-        (change)="gender.set($any($event.target).value)"
-        id="gender"
-        class="form-select"
-      >
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
-
-    <!-- Species -->
-    <div class="form-group">
-      <label for="species" class="form-label">Species</label>
-      <select
-        [value]="specie()"
-        (change)="specie.set($any($event.target).value)"
-        id="species"
-        class="form-select"
-      >
-        <option value="human">Human</option>
-        <option value="half-giant">Half-giant</option>
-        <option value="dog">Dog</option>
-        <option value="owl">Owl</option>
-        <option value="werewolf">Werewolf</option>
-        <option value="ghost">Ghost</option>
-        <option value="goblin">Goblin</option>
-        <option value="giant">Giant</option>
-        <option value="house-elf">House-elf</option>
-      </select>
-    </div>
-
-    <!-- House -->
-    <div class="form-group">
-      <label for="house" class="form-label">House</label>
-      <select
-        [value]="house()"
-        (change)="house.set($any($event.target).value)"
-        id="house"
-        class="form-select"
-      >
-        <option value="Gryffindor">Gryffindor</option>
-        <option value="Hufflepuff">Hufflepuff</option>
-        <option value="Ravenclaw">Ravenclaw</option>
-        <option value="Slytherin">Slytherin</option>
-      </select>
-    </div>
-
-    <!-- Date of Birth -->
-    <div class="form-group">
-      <label for="dateOfBirth" class="form-label">Date of Birth</label>
-      <input
-        [value]="dateOfBirth() || ''"
-        (input)="dateOfBirth.set($any($event.target).value)"
-        id="dateOfBirth"
-        type="date"
-        class="form-control"
-      />
-    </div>
-
-    <!-- Year of Birth -->
-    <div class="form-group">
-      <label for="year" class="form-label">Year of Birth</label>
-      <input
-        [value]="year() || ''"
-        (input)="year.set($any($event.target).value ? +$any($event.target).value : null)"
-        id="year"
-        type="number"
-        class="form-control"
-      />
-    </div>
-
-    <!-- Ancestry -->
-    <div class="form-group">
-      <label for="ancestry" class="form-label">Ancestry</label>
-      <input
-        [value]="ancestry()"
-        (input)="ancestry.set($any($event.target).value)"
-        id="ancestry"
-        type="text"
-        class="form-control"
-        placeholder="pure-blood, half-blood, muggle-born..."
-      />
-    </div>
-
-    <!-- Eye Colour -->
-    <div class="form-group">
-      <label for="eyeColour" class="form-label">Eye Colour</label>
-      <input
-        [value]="eyeColour()"
-        (input)="eyeColour.set($any($event.target).value)"
-        id="eyeColour"
-        type="text"
-        class="form-control"
-      />
-    </div>
-
-    <!-- Hair Color -->
-    <div class="form-group">
-      <label for="hairColor" class="form-label">Hair Color</label>
-      <input
-        [value]="hairColor()"
-        (input)="hairColor.set($any($event.target).value)"
-        id="hairColor"
-        type="text"
-        class="form-control"
-      />
-    </div>
-
-    <!-- Patronus -->
-    <div class="form-group">
-      <label for="patronus" class="form-label">Patronus</label>
-      <input
-        [value]="patronus()"
-        (input)="patronus.set($any($event.target).value)"
-        id="patronus"
-        type="text"
-        class="form-control"
-      />
-    </div>
-
-    <!-- Actor -->
-    <div class="form-group">
-      <label for="actor" class="form-label">Actor *</label>
-      <input
-        [value]="actor()"
-        (input)="actor.set($any($event.target).value)"
-        id="actor"
-        type="text"
-        class="form-control"
-        [class.is-invalid]="!actorValid()"
-      />
-      <small *ngIf="!actorValid()" class="text-danger">
-        Actor name must be at least 3 characters
-      </small>
-    </div>
-
-    <!-- Checkboxes -->
-    <div class="form-group">
-      <div class="form-check">
-        <input
-          [checked]="wizard()"
-          (change)="wizard.set($any($event.target).checked)"
-          id="wizard"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="wizard" class="form-check-label">Wizard</label>
-      </div>
-
-      <div class="form-check">
-        <input
-          [checked]="hogwartsStudent()"
-          (change)="hogwartsStudent.set($any($event.target).checked)"
-          id="hogwartsStudent"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="hogwartsStudent" class="form-check-label">Hogwarts Student</label>
-      </div>
-
-      <div class="form-check">
-        <input
-          [checked]="hogwartsStaff()"
-          (change)="hogwartsStaff.set($any($event.target).checked)"
-          id="hogwartsStaff"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="hogwartsStaff" class="form-check-label">Hogwarts Staff</label>
-      </div>
-
-      <div class="form-check">
-        <input
-          [checked]="alive()"
-          (change)="alive.set($any($event.target).checked)"
-          id="alive"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="alive" class="form-check-label">Alive</label>
-      </div>
-    </div>
-
-    <!-- Image URL -->
-    <div class="form-group">
-      <label for="image" class="form-label">Image URL</label>
-      <input
-        [value]="image()"
-        (input)="image.set($any($event.target).value)"
-        id="image"
-        type="url"
-        class="form-control"
-        placeholder="https://..."
-      />
-    </div>
-
-    <!-- Wand Section -->
-    <fieldset class="form-group">
-      <legend>Wand</legend>
-
+    <form class="character-form" (ngSubmit)="onSubmit()">
+      <!-- Name -->
       <div class="form-group">
-        <label for="wandWood" class="form-label">Wood</label>
+        <label for="name" class="form-label">Name *</label>
         <input
-          [value]="wand().wood"
-          (input)="updateWand('wood', $any($event.target).value)"
-          id="wandWood"
+          [value]="name()"
+          (input)="name.set($any($event.target).value)"
+          id="name"
           type="text"
+          class="form-control"
+          [class.is-invalid]="!nameValid()"
+        />
+        <small *ngIf="!nameValid()" class="text-danger"> Name must be at least 3 characters </small>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender" class="form-label">Gender</label>
+        <select
+          [value]="gender()"
+          (change)="gender.set($any($event.target).value)"
+          id="gender"
+          class="form-select"
+        >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <!-- Species -->
+      <div class="form-group">
+        <label for="species" class="form-label">Species</label>
+        <select
+          [value]="specie()"
+          (change)="specie.set($any($event.target).value)"
+          id="species"
+          class="form-select"
+        >
+          <option value="human">Human</option>
+          <option value="half-giant">Half-giant</option>
+          <option value="dog">Dog</option>
+          <option value="owl">Owl</option>
+          <option value="werewolf">Werewolf</option>
+          <option value="ghost">Ghost</option>
+          <option value="goblin">Goblin</option>
+          <option value="giant">Giant</option>
+          <option value="house-elf">House-elf</option>
+        </select>
+      </div>
+
+      <!-- House -->
+      <div class="form-group">
+        <label for="house" class="form-label">House</label>
+        <select
+          [value]="house()"
+          (change)="house.set($any($event.target).value)"
+          id="house"
+          class="form-select"
+        >
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Slytherin">Slytherin</option>
+        </select>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="form-group">
+        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+        <input
+          [value]="dateOfBirth() || ''"
+          (input)="dateOfBirth.set($any($event.target).value)"
+          id="dateOfBirth"
+          type="date"
           class="form-control"
         />
       </div>
 
+      <!-- Year of Birth -->
       <div class="form-group">
-        <label for="wandCore" class="form-label">Core</label>
+        <label for="year" class="form-label">Year of Birth</label>
         <input
-          [value]="wand().core"
-          (input)="updateWand('core', $any($event.target).value)"
-          id="wandCore"
-          type="text"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="wandLength" class="form-label">Length</label>
-        <input
-          [value]="wand().length || ''"
-          (input)="
-            updateWand('length', $any($event.target).value ? +$any($event.target).value : null)
-          "
-          id="wandLength"
+          [value]="year() || ''"
+          (input)="year.set($any($event.target).value ? +$any($event.target).value : null)"
+          id="year"
           type="number"
-          step="0.1"
           class="form-control"
         />
       </div>
-    </fieldset>
 
-    <!-- Buttons -->
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary" [disabled]="!nameValid() || !actorValid()">
-        Add Character
-      </button>
-      <button type="button" (click)="resetForm()" class="btn btn-secondary">Reset</button>
-    </div>
-  </form>
+      <!-- Ancestry -->
+      <div class="form-group">
+        <label for="ancestry" class="form-label">Ancestry</label>
+        <input
+          [value]="ancestry()"
+          (input)="ancestry.set($any($event.target).value)"
+          id="ancestry"
+          type="text"
+          class="form-control"
+          placeholder="pure-blood, half-blood, muggle-born..."
+        />
+      </div>
+
+      <!-- Eye Colour -->
+      <div class="form-group">
+        <label for="eyeColour" class="form-label">Eye Colour</label>
+        <input
+          [value]="eyeColour()"
+          (input)="eyeColour.set($any($event.target).value)"
+          id="eyeColour"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <!-- Hair Color -->
+      <div class="form-group">
+        <label for="hairColor" class="form-label">Hair Color</label>
+        <input
+          [value]="hairColor()"
+          (input)="hairColor.set($any($event.target).value)"
+          id="hairColor"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <!-- Patronus -->
+      <div class="form-group">
+        <label for="patronus" class="form-label">Patronus</label>
+        <input
+          [value]="patronus()"
+          (input)="patronus.set($any($event.target).value)"
+          id="patronus"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <!-- Actor -->
+      <div class="form-group">
+        <label for="actor" class="form-label">Actor *</label>
+        <input
+          [value]="actor()"
+          (input)="actor.set($any($event.target).value)"
+          id="actor"
+          type="text"
+          class="form-control"
+          [class.is-invalid]="!actorValid()"
+        />
+        <small *ngIf="!actorValid()" class="text-danger">
+          Actor name must be at least 3 characters
+        </small>
+      </div>
+
+      <!-- Checkboxes -->
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            [checked]="wizard()"
+            (change)="wizard.set($any($event.target).checked)"
+            id="wizard"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="wizard" class="form-check-label">Wizard</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            [checked]="hogwartsStudent()"
+            (change)="hogwartsStudent.set($any($event.target).checked)"
+            id="hogwartsStudent"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="hogwartsStudent" class="form-check-label">Hogwarts Student</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            [checked]="hogwartsStaff()"
+            (change)="hogwartsStaff.set($any($event.target).checked)"
+            id="hogwartsStaff"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="hogwartsStaff" class="form-check-label">Hogwarts Staff</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            [checked]="alive()"
+            (change)="alive.set($any($event.target).checked)"
+            id="alive"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label for="alive" class="form-check-label">Alive</label>
+        </div>
+      </div>
+
+      <!-- Image URL -->
+      <div class="form-group">
+        <label for="image" class="form-label">Image URL</label>
+        <input
+          [value]="image()"
+          (input)="image.set($any($event.target).value)"
+          id="image"
+          type="url"
+          class="form-control"
+          placeholder="https://..."
+        />
+      </div>
+
+      <!-- Wand Section -->
+      <fieldset class="form-group">
+        <legend>Wand</legend>
+
+        <div class="form-group">
+          <label for="wandWood" class="form-label">Wood</label>
+          <input
+            [value]="wand().wood"
+            (input)="updateWand('wood', $any($event.target).value)"
+            id="wandWood"
+            type="text"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="wandCore" class="form-label">Core</label>
+          <input
+            [value]="wand().core"
+            (input)="updateWand('core', $any($event.target).value)"
+            id="wandCore"
+            type="text"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="wandLength" class="form-label">Length</label>
+          <input
+            [value]="wand().length || ''"
+            (input)="
+              updateWand('length', $any($event.target).value ? +$any($event.target).value : null)
+            "
+            id="wandLength"
+            type="number"
+            step="0.1"
+            class="form-control"
+          />
+        </div>
+      </fieldset>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!nameValid() || !actorValid()">
+          Add Character
+        </button>
+        <button type="button" (click)="resetForm()" class="btn btn-secondary">Reset</button>
+      </div>
+    </form>
+  </div>
 </div>

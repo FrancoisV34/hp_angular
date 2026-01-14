@@ -1,5 +1,152 @@
-@for (student of students(); track student.id) {
-<p>{{ student.name }}</p>
-} @empty {
-<p>No students found.</p>
-}
+<!-- =============================================
+   MAGICAL STUDENT REALM - ENCHANTED LEARNING HALL
+   Where young wizards and witches gather to learn!
+============================================= -->
+<div class="magical-student-realm">
+  <!-- Realm Header -->
+  <div class="realm-header">
+    <h1 class="realm-title">Hogwarts Student Body</h1>
+    <div class="realm-subtitle">
+      <span class="subtitle-text">The Future of the Wizarding World</span>
+      <div class="magical-divider"></div>
+    </div>
+    <div class="realm-stats">
+      <div class="stat-item">
+        <span class="stat-number">{{ students().length }}</span>
+        <span class="stat-label">Students</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getHouseCount('Gryffindor') }}</span>
+        <span class="stat-label">Gryffindors</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getHouseCount('Hufflepuff') }}</span>
+        <span class="stat-label">Hufflepuffs</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getHouseCount('Ravenclaw') }}</span>
+        <span class="stat-label">Ravenclaws</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getHouseCount('Slytherin') }}</span>
+        <span class="stat-label">Slytherins</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enchanted Student Gallery -->
+  <div class="enchanted-student-gallery">
+    @for (student of students(); track student.id; let i = $index) {
+    <div
+      class="student-mystical-card"
+      [class.gryffindor-student]="student.house === 'Gryffindor'"
+      [class.hufflepuff-student]="student.house === 'Hufflepuff'"
+      [class.ravenclaw-student]="student.house === 'Ravenclaw'"
+      [class.slytherin-student]="student.house === 'Slytherin'"
+      [style.--card-index]="i"
+    >
+      <!-- Card Header with Avatar -->
+      <div class="card-magical-header">
+        <div class="student-avatar-container">
+          <div class="student-avatar" [class]="'avatar-' + (student.house?.toLowerCase() || '')">
+            @if (student.image) {
+            <img [src]="student.image" [alt]="student.name" class="avatar-image" />
+            } @else {
+            <div class="avatar-placeholder">
+              <span class="avatar-initial">{{ getInitials(student.name) }}</span>
+            </div>
+            }
+          </div>
+          <div class="avatar-magic-ring"></div>
+        </div>
+        <div class="student-identity">
+          <h3 class="student-name">{{ student.name }}</h3>
+          <div
+            class="student-house-badge"
+            [class]="'badge-' + (student.house?.toLowerCase() || '')"
+          >
+            <span class="house-emoji">{{ getHouseEmoji(student.house) }}</span>
+            <span class="house-name">{{ student.house }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Magical Body -->
+      <div class="card-enchanted-body">
+        <div class="student-magical-info">
+          <!-- Basic Info -->
+          <div class="info-section">
+            <h4 class="section-title">📚 Student Profile</h4>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">🧬 Species:</span>
+                <span class="info-value">{{ student.species }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">⚧ Gender:</span>
+                <span class="info-value">{{ student.gender }}</span>
+              </div>
+              @if (student.year) {
+              <div class="info-item">
+                <span class="info-label">📖 Year:</span>
+                <span class="info-value">{{ student.year }}{{ student.year | suffix }}</span>
+              </div>
+              } @if (student.dateOfBirth) {
+              <div class="info-item">
+                <span class="info-label">🎂 Born:</span>
+                <span class="info-value">{{ student.dateOfBirth }}</span>
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- Magical Abilities -->
+          @if (student.wand || student.patronus || student.ancestry) {
+          <div class="info-section">
+            <h4 class="section-title">✨ Magical Abilities</h4>
+            <div class="info-grid">
+              @if (student.wand && student.wand.wood) {
+              <div class="info-item">
+                <span class="info-label">🪄 Wand:</span>
+                <span class="info-value"
+                  >{{ student.wand.wood }}
+                  {{ student.wand.core ? '(' + student.wand.core + ')' : '' }}</span
+                >
+              </div>
+              } @if (student.patronus) {
+              <div class="info-item">
+                <span class="info-label">🛡️ Patronus:</span>
+                <span class="info-value">{{ student.patronus }}</span>
+              </div>
+              } @if (student.ancestry) {
+              <div class="info-item">
+                <span class="info-label">👪 Ancestry:</span>
+                <span class="info-value">{{ student.ancestry }}</span>
+              </div>
+              }
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Card Magical Effects -->
+      <div class="card-mystical-effects">
+        <div class="magic-sparkle-primary"></div>
+        <div class="magic-sparkle-secondary"></div>
+        <div class="magic-aura"></div>
+      </div>
+    </div>
+    } @empty {
+    <!-- Empty Magical Realm -->
+    <div class="empty-magical-realm">
+      <div class="empty-realm-icon">🎓</div>
+      <h3 class="empty-realm-title">No Students Found</h3>
+      <p class="empty-realm-message">The halls of Hogwarts await their future students...</p>
+      <div class="empty-realm-particles">
+        <div class="particle" *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]"></div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

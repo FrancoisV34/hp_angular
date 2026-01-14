@@ -399,11 +399,11 @@
 @keyframes gryffindorRealmFire {
   0%,
   100% {
-    transform: translateY(-50%) scale(1) rotate(0deg);
+    transform: translateY(-50%) scale(1) rotate(-45deg);
     opacity: 0.8;
   }
   50% {
-    transform: translateY(-50%) scale(1.3) rotate(180deg);
+    transform: translateY(-50%) scale(1.3) rotate(45deg);
     opacity: 1;
   }
 }
@@ -451,21 +451,21 @@
   background: conic-gradient(
       from 0deg at 50% 50%,
       #8b0000 0deg,
-      #d3a625 90deg,
-      #b8860b 180deg,
-      #cd853f 270deg,
-      #8b4513 360deg
+      #c9a347 90deg,
+      #b8923d 180deg,
+      #d4a574 270deg,
+      #9d6b3f 360deg
     ),
     radial-gradient(
       ellipse at center,
-      rgba(139, 0, 0, 0.95) 0%,
-      rgba(139, 69, 19, 0.85) 40%,
-      rgba(0, 0, 0, 0.9) 100%
+      rgba(139, 0, 0, 0.75) 0%,
+      rgba(139, 69, 19, 0.65) 40%,
+      rgba(0, 0, 0, 0.7) 100%
     );
   background-size: 300% 300%, 200% 200%;
   animation: gryffindorRealmStorm 25s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-  color: #fff;
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(139, 69, 19, 0.6);
+  color: #8b0000;
+  // text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(139, 69, 19, 0.6);
 
   &::before {
     content: '';
@@ -507,8 +507,8 @@
     animation: gryffindorRealmTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: darkgoldenrod;
-    text-shadow: 5px 5px 20px rgba(139, 69, 19, 0.9), 0 0 40px rgba(255, 215, 0, 0.7);
+    -webkit-text-fill-color: rgba(208, 66, 15, 0.792);
+    text-shadow: 5px 5px 20px rgba(139, 69, 19, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
 
     &::before {
       content: '🔥';
@@ -543,101 +543,127 @@
 }
 
 /* =============================================
-   HUFFLEPUFF - LIGHT & LOYALTY
-   Warm golden animated extravaganza!
+   HUFFLEPUFF REALM - WARM LOYALTY DOMAIN
+   A realm of warmth and unwavering loyalty!
 ============================================= */
-.houses-container.hufflepuff {
-  background: radial-gradient(
-      ellipse at center,
-      rgba(255, 215, 0, 0.8) 0%,
-      rgba(218, 165, 32, 0.6) 50%,
-      rgba(184, 134, 11, 0.4) 100%
+.houses-mystical-realm.hufflepuff-realm {
+  background: conic-gradient(
+      from 0deg at 50% 50%,
+      #daa520 0deg,
+      #f0c53e 90deg,
+      #ffd700 180deg,
+      #b8860b 270deg,
+      #8b4513 360deg
     ),
-    linear-gradient(135deg, #ffd700 0%, #f0c53e 30%, #daa520 60%, #ffeb3b 90%);
-  background-size: 500% 500%, 700% 700%;
-  animation: hufflepuffGlow 25s ease-in-out infinite, hufflepuffPulse 4s ease-in-out infinite;
-  color: #3e2723;
-  text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 215, 0, 0.5);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.3) 0%, transparent 40%),
-      radial-gradient(circle at 70% 70%, rgba(240, 197, 62, 0.25) 0%, transparent 40%),
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><defs><radialGradient id="sunbeam" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(255,255,0,0.8)"/><stop offset="50%" stop-color="rgba(255,215,0,0.4)"/><stop offset="100%" stop-color="rgba(255,140,0,0.2)"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23sunbeam)" opacity="0.2"/><line x1="200" y1="50" x2="200" y2="350" stroke="rgba(255,215,0,0.3)" stroke-width="3"/><line x1="50" y1="200" x2="350" y2="200" stroke="rgba(255,215,0,0.3)" stroke-width="3"/><line x1="80" y1="80" x2="320" y2="320" stroke="rgba(255,215,0,0.2)" stroke-width="2"/><line x1="320" y1="80" x2="80" y2="320" stroke="rgba(255,215,0,0.2)" stroke-width="2"/></svg>');
-    background-size: 1000px 1000px;
-    opacity: 0.5;
-    z-index: -1;
-    animation: sunlightDance 15s ease-in-out infinite;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(255, 215, 0, 0.08),
-      rgba(255, 215, 0, 0.08) 15px,
-      rgba(240, 197, 62, 0.05) 15px,
-      rgba(240, 197, 62, 0.05) 30px
+    radial-gradient(
+      ellipse at center,
+      rgba(218, 165, 32, 0.95) 0%,
+      rgba(184, 134, 11, 0.85) 40%,
+      rgba(139, 69, 19, 0.9) 100%
     );
-    z-index: -2;
-    animation: goldenWaves 20s ease-in-out infinite;
+  background-size: 300% 300%, 200% 200%;
+  animation: hufflepuffRealmStorm 25s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: #e0d662;
+  // text-shadow: 3px 3px 10px rgba(0, 0, 0, 1), 0 0 25px rgba(218, 165, 32, 0.4);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(255, 215, 0, 0.1) 0deg 10deg,
+      transparent 10deg 20deg,
+      rgba(240, 197, 62, 0.08) 20deg 30deg,
+      transparent 30deg 40deg
+    );
+    background-size: 150% 150%;
+    opacity: 0.6;
+    z-index: -1;
+    animation: hufflepuffRealmHoney 15s linear infinite;
   }
 
-  h1 {
-    color: #8b4513;
-    text-shadow: 4px 4px 12px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 215, 0, 0.7),
-      0 0 40px rgba(240, 197, 62, 0.5), 0 0 60px rgba(184, 134, 11, 0.4);
-    font-weight: 900;
-    letter-spacing: 4px;
-    background: linear-gradient(45deg, #ffd700, #f0c53e, #daa520, #b8860b);
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: radial-gradient(circle at 25% 25%, rgba(240, 197, 62, 0.5) 0%, transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(218, 165, 32, 0.4) 0%, transparent 60%);
+    z-index: -2;
+    animation: hufflepuffRealmWarmth 20s ease-in-out infinite;
+    filter: blur(3px);
+  }
+
+  .portal-title {
+    background: linear-gradient(45deg, #f0c53e, #ffd700, #daa520, #b8860b, #cd853f);
     background-size: 400% 400%;
-    animation: goldenFlow 6s ease-in-out infinite;
+    animation: hufflepuffRealmTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: rgba(184, 134, 11, 0.792);
+    text-shadow: 5px 5px 20px rgba(184, 134, 11, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
+
+    &::before {
+      content: '☀️';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
+    }
 
     &::after {
-      background: linear-gradient(90deg, #ffd700, #f0c53e, #daa520, #cd853f);
-      background-size: 500% 500%;
-      animation: honeyFlow 4s ease-in-out infinite;
-      height: 8px;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+      content: '☀️';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
     }
   }
 
+  .house-emblem {
+    background: radial-gradient(circle, #f0c53e 0%, #daa520 50%, #b8860b 100%);
+    border: 4px solid #ffd700;
+    box-shadow: 0 0 50px rgba(240, 197, 62, 0.8), inset 0 0 30px rgba(218, 165, 32, 0.6);
+    animation: hufflepuffRealmEmblem 4s ease-in-out infinite;
+  }
+
+  .all-houses-emblems .emblem-emblem.hufflepuff {
+    background: radial-gradient(circle, #f0c53e 0%, #daa520 50%, #b8860b 100%);
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 30px rgba(240, 197, 62, 0.6);
+    animation: hufflepuffRealmMiniEmblem 5s ease-in-out infinite;
+  }
+
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #ffd700, #f0c53e, #daa520);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
-    animation: honeyGlow 3s ease-in-out infinite alternate;
+    background: linear-gradient(45deg, #f0c53e, #ffd700, #daa520, #b8860b);
+    box-shadow: 0 0 20px rgba(240, 197, 62, 1);
+    animation: hufflepuffRealmScrollbar 2s ease-in-out infinite alternate;
   }
 }
 
 /* =============================================
-   RAVENCLAW - WISDOM & MYSTERY
-   Elegant blue animated sophistication!
+   RAVENCLAW REALM - WISDOM & MYSTERY DOMAIN
+   A realm of wisdom and mysterious knowledge!
 ============================================= */
-.houses-container.ravenclaw {
-  background: radial-gradient(
-      ellipse at center,
-      rgba(14, 95, 165, 0.8) 0%,
-      rgba(30, 144, 255, 0.6) 50%,
-      rgba(0, 0, 139, 0.7) 100%
+.houses-mystical-realm.ravenclaw-realm {
+  background: conic-gradient(
+      from 0deg at 50% 50%,
+      #0e5fa5 0deg,
+      #1e90ff 90deg,
+      #6495ed 180deg,
+      #4682b4 270deg,
+      #0a2463 360deg
     ),
-    linear-gradient(135deg, #0a2463 0%, #0e5fa5 30%, #1e90ff 60%, #6495ed 90%);
-  background-size: 600% 600%, 800% 800%;
-  animation: ravenclawFlow 30s ease-in-out infinite, ravenclawSparkle 2s ease-in-out infinite;
-  color: #f8f8ff;
-  text-shadow: 3px 3px 12px rgba(0, 0, 50, 0.8), 0 0 25px rgba(30, 144, 255, 0.4);
+    radial-gradient(
+      ellipse at center,
+      rgba(14, 95, 165, 0.95) 0%,
+      rgba(30, 144, 255, 0.85) 40%,
+      rgba(0, 0, 139, 0.9) 100%
+    );
+  background-size: 300% 300%, 200% 200%;
+  animation: ravenclawRealmStorm 25s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: rgba(14, 95, 165, 0.95);
+  // text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(30, 144, 255, 0.6);
 
   &::before {
     content: '';
@@ -646,72 +672,97 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><radialGradient id="starfield" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.9)"/><stop offset="50%" stop-color="rgba(173,216,230,0.6)"/><stop offset="100%" stop-color="rgba(0,191,255,0.3)"/></radialGradient></defs><circle cx="250" cy="250" r="200" fill="url(%23starfield)" opacity="0.1"/><polygon points="250,50 270,150 370,150 290,220 310,320 250,250 190,320 210,220 130,150 230,150" fill="rgba(255,255,255,0.4)"/><circle cx="150" cy="150" r="3" fill="rgba(255,255,255,0.8)"/><circle cx="350" cy="100" r="2" fill="rgba(255,255,255,0.6)"/><circle cx="100" cy="350" r="2.5" fill="rgba(255,255,255,0.7)"/><circle cx="400" cy="300" r="1.5" fill="rgba(255,255,255,0.5)"/></svg>');
-    background-size: 1200px 1200px;
-    opacity: 0.4;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(30, 144, 255, 0.1) 0deg 10deg,
+      transparent 10deg 20deg,
+      rgba(100, 149, 237, 0.08) 20deg 30deg,
+      transparent 30deg 40deg
+    );
+    background-size: 150% 150%;
+    opacity: 0.6;
     z-index: -1;
-    animation: constellationMove 25s ease-in-out infinite;
+    animation: ravenclawRealmConstellation 15s linear infinite;
   }
 
   &::after {
     content: '';
     position: absolute;
-    top: -80px;
-    left: -80px;
-    right: -80px;
-    bottom: -80px;
-    background: radial-gradient(ellipse at 70% 30%, rgba(100, 149, 237, 0.3) 0%, transparent 60%),
-      radial-gradient(ellipse at 30% 70%, rgba(30, 144, 255, 0.2) 0%, transparent 60%);
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: radial-gradient(circle at 25% 25%, rgba(100, 149, 237, 0.5) 0%, transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(30, 144, 255, 0.4) 0%, transparent 60%);
     z-index: -2;
-    animation: auroraFlow 18s ease-in-out infinite;
-    filter: blur(1px);
+    animation: ravenclawRealmAurora 20s ease-in-out infinite;
+    filter: blur(3px);
   }
 
-  h1 {
-    color: #7fffd4;
-    text-shadow: 4px 4px 12px rgba(0, 0, 50, 0.7), 0 0 25px rgba(30, 144, 255, 0.6),
-      0 0 40px rgba(100, 149, 237, 0.4), 0 0 60px rgba(0, 191, 255, 0.3);
-    background: linear-gradient(45deg, #0e5fa5, #7fffd4, #1e90ff, #6495ed);
-    background-size: 500% 500%;
-    animation: aquaFlow 5s ease-in-out infinite;
+  .portal-title {
+    background: linear-gradient(45deg, #1e90ff, #6495ed, #0e5fa5, #4682b4, #7fffd4);
+    background-size: 400% 400%;
+    animation: ravenclawRealmTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-style: italic;
-    letter-spacing: 5px;
+    -webkit-text-fill-color: rgba(0, 0, 139, 0.9);
+    text-shadow: 5px 5px 20px rgba(0, 0, 139, 0.9), 0 0 40px rgba(145, 169, 193, 0.7);
+
+    &::before {
+      content: '⭐';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
+    }
 
     &::after {
-      background: linear-gradient(90deg, #0e5fa5, #7fffd4, #6495ed, #4682b4);
-      background-size: 600% 600%;
-      animation: waterFlow 4s ease-in-out infinite;
-      height: 8px;
-      box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
+      content: '⭐';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
     }
   }
 
+  .house-emblem {
+    background: radial-gradient(circle, #1e90ff 0%, #0e5fa5 50%, #6495ed 100%);
+    border: 4px solid #7fffd4;
+    box-shadow: 0 0 50px rgba(100, 149, 237, 0.8), inset 0 0 30px rgba(30, 144, 255, 0.6);
+    animation: ravenclawRealmEmblem 4s ease-in-out infinite;
+  }
+
+  .all-houses-emblems .emblem-emblem.ravenclaw {
+    background: radial-gradient(circle, #1e90ff 0%, #0e5fa5 50%, #6495ed 100%);
+    border: 3px solid #7fffd4;
+    box-shadow: 0 0 30px rgba(100, 149, 237, 0.6);
+    animation: ravenclawRealmMiniEmblem 5s ease-in-out infinite;
+  }
+
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #0e5fa5, #7fffd4, #1e90ff);
-    box-shadow: 0 0 15px rgba(30, 144, 255, 0.9);
-    animation: aquaGlow 2.5s ease-in-out infinite alternate;
+    background: linear-gradient(45deg, #1e90ff, #6495ed, #0e5fa5, #7fffd4);
+    box-shadow: 0 0 20px rgba(100, 149, 237, 1);
+    animation: ravenclawRealmScrollbar 2s ease-in-out infinite alternate;
   }
 }
 
 /* =============================================
-   SLYTHERIN - POWER & AMBITION
-   Dark green animated majesty!
+   SLYTHERIN REALM - POWER & AMBITION DOMAIN
+   A realm of power and cunning ambition!
 ============================================= */
-.houses-container.slytherin {
-  background: radial-gradient(
-      ellipse at center,
-      rgba(26, 71, 42, 0.9) 0%,
-      rgba(34, 139, 34, 0.7) 50%,
-      rgba(0, 50, 0, 0.8) 100%
+.houses-mystical-realm.slytherin-realm {
+  background: conic-gradient(
+      from 0deg at 50% 50%,
+      #228b22 0deg,
+      #2e8b57 90deg,
+      #3cb371 180deg,
+      #32cd32 270deg,
+      #0a3d1b 360deg
     ),
-    linear-gradient(135deg, #0a3d1b 0%, #228b22 30%, #2e8b57 60%, #3cb371 90%);
-  background-size: 700% 700%, 900% 900%;
-  animation: slytherinFlow 35s ease-in-out infinite, slytherinMystique 3s ease-in-out infinite;
-  color: #f0fff0;
-  text-shadow: 3px 3px 12px rgba(0, 20, 10, 0.9), 0 0 25px rgba(34, 139, 34, 0.5);
+    radial-gradient(
+      ellipse at center,
+      rgba(34, 139, 34, 0.95) 0%,
+      rgba(46, 139, 87, 0.85) 40%,
+      rgba(0, 50, 0, 0.9) 100%
+    );
+  background-size: 300% 300%, 200% 200%;
+  animation: slytherinRealmStorm 25s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: rgba(46, 139, 87, 0.85);
+  // text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(34, 139, 34, 0.6);
 
   &::before {
     content: '';
@@ -720,53 +771,71 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><defs><radialGradient id="snake" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(50,205,50,0.8)"/><stop offset="50%" stop-color="rgba(34,139,34,0.4)"/><stop offset="100%" stop-color="rgba(0,100,0,0.2)"/></radialGradient></defs><path d="M100,300 Q200,200 300,300 Q400,400 500,300 Q400,200 300,300 Q200,400 100,300 Q50,250 100,300" stroke="url(%23snake)" stroke-width="8" fill="none" opacity="0.3"/><path d="M120,300 Q220,220 300,300 Q380,380 480,300 Q380,220 300,300 Q220,380 120,300 Q70,270 120,300" stroke="rgba(60,179,113,0.4)" stroke-width="4" fill="none" opacity="0.2"/><circle cx="300" cy="300" r="100" fill="url(%23snake)" opacity="0.1"/><path d="M250,250 Q300,200 350,250 Q400,300 350,350 Q300,400 250,350 Q200,300 250,250" fill="rgba(50,205,50,0.2)"/><circle cx="300" cy="300" r="30" fill="rgba(255,255,255,0.3)"/></svg>');
-    background-size: 1400px 1400px;
-    opacity: 0.4;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(34, 139, 34, 0.1) 0deg 10deg,
+      transparent 10deg 20deg,
+      rgba(60, 179, 113, 0.08) 20deg 30deg,
+      transparent 30deg 40deg
+    );
+    background-size: 150% 150%;
+    opacity: 0.6;
     z-index: -1;
-    animation: serpentDance 20s ease-in-out infinite;
+    animation: slytherinRealmSerpent 15s linear infinite;
   }
 
   &::after {
     content: '';
     position: absolute;
-    top: -120px;
-    left: -120px;
-    right: -120px;
-    bottom: -120px;
-    background: radial-gradient(ellipse at 30% 70%, rgba(60, 179, 113, 0.4) 0%, transparent 70%),
-      radial-gradient(ellipse at 70% 30%, rgba(34, 139, 34, 0.3) 0%, transparent 70%);
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: radial-gradient(circle at 25% 25%, rgba(60, 179, 113, 0.5) 0%, transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(34, 139, 34, 0.4) 0%, transparent 60%);
     z-index: -2;
-    animation: emeraldFlow 22s ease-in-out infinite;
-    filter: blur(2px);
+    animation: slytherinRealmEmerald 20s ease-in-out infinite;
+    filter: blur(3px);
   }
 
-  h1 {
-    color: #9acd32;
-    text-shadow: 4px 4px 12px rgba(0, 20, 10, 0.8), 0 0 25px rgba(60, 179, 113, 0.6),
-      0 0 40px rgba(34, 139, 34, 0.4), 0 0 60px rgba(50, 205, 50, 0.3);
-    background: linear-gradient(45deg, #228b22, #9acd32, #2e8b57, #3cb371);
-    background-size: 600% 600%;
-    animation: emeraldFlow 7s ease-in-out infinite;
+  .portal-title {
+    background: linear-gradient(45deg, #2e8b57, #3cb371, #228b22, #32cd32, #9acd32);
+    background-size: 400% 400%;
+    animation: slytherinRealmTitle 6s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900;
-    letter-spacing: 6px;
+    -webkit-text-fill-color: rgba(0, 50, 0, 0.9);
+    text-shadow: 5px 5px 20px rgba(8, 98, 8, 0.9), 0 0 40px rgba(34, 139, 34, 0.7);
+
+    &::before {
+      content: '🐍';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
+    }
 
     &::after {
-      background: linear-gradient(90deg, #228b22, #9acd32, #3cb371, #32cd32);
-      background-size: 700% 700%;
-      animation: serpentFlow 5s ease-in-out infinite;
-      height: 8px;
-      box-shadow: 0 0 30px rgba(60, 179, 113, 0.9);
+      content: '🐍';
+      animation: gryffindorRealmFire 3s ease-in-out infinite;
     }
   }
 
+  .house-emblem {
+    background: radial-gradient(circle, #2e8b57 0%, #228b22 50%, #3cb371 100%);
+    border: 4px solid #9acd32;
+    box-shadow: 0 0 50px rgba(60, 179, 113, 0.8), inset 0 0 30px rgba(34, 139, 34, 0.6);
+    animation: slytherinRealmEmblem 4s ease-in-out infinite;
+  }
+
+  .all-houses-emblems .emblem-emblem.slytherin {
+    background: radial-gradient(circle, #2e8b57 0%, #228b22 50%, #3cb371 100%);
+    border: 3px solid #9acd32;
+    box-shadow: 0 0 30px rgba(60, 179, 113, 0.6);
+    animation: slytherinRealmMiniEmblem 5s ease-in-out infinite;
+  }
+
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #228b22, #9acd32, #2e8b57);
-    box-shadow: 0 0 15px rgba(60, 179, 113, 0.9);
-    animation: emeraldGlow 3.5s ease-in-out infinite alternate;
+    background: linear-gradient(45deg, #2e8b57, #3cb371, #228b22, #9acd32);
+    box-shadow: 0 0 20px rgba(60, 179, 113, 1);
+    animation: slytherinRealmScrollbar 2s ease-in-out infinite alternate;
   }
 }
 

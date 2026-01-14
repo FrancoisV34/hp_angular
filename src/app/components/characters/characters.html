@@ -1,5 +1,9 @@
-<button (click)="toggleAddCharacter()">Add Character</button>
-
+<div class="add-charac-button-container">
+  <button class="add-character-button" (click)="toggleAddCharacter()">
+    <span class="wand-icon">🪄</span>
+    <span class="button-text">Summon Character</span>
+  </button>
+</div>
 @if (showAddCharacter()) {
 <app-add-character />
 }
